@@ -1,0 +1,12 @@
+{
+  "session_id": "cyranose_reading_pose_session_20260722_161100",
+  "created_at_utc": "2026-07-22T20:11:01.700+00:00",
+  "trial_id": "line_raster_blank_fresh_01",
+  "trial_label": "blank_line_raster",
+  "notes": "clean block 01; blank recorded before mint; fresh dry towel on unused clean backing; previous mint area avoided; desk tag moved before block then taped and fixed; fixed raster bounds and lane guides; row spacing approximately 2-3 cm; target height 2.5 cm; target speed 1 cm/s; turns outside analysis area",
+  "port": "COM4",
+  "baud": 57600,
+  "rsd_interval_s": 0.2,
+  "max_sync_ms": 250.0,
+  "save_video": true
+}

@@ -1,0 +1,12 @@
+{
+  "session_id": "cyranose_reading_pose_session_20260722_163441",
+  "created_at_utc": "2026-07-22T20:34:42.827+00:00",
+  "trial_id": "line_raster_mint_fresh_01",
+  "trial_label": "mint_line_raster",
+  "notes": "clean block 01; mint recorded after line_raster_blank_fresh_01; fresh source prepared immediately before run; exact amount 5-6 drops; applied evenly; scan started 2 minutes after application; line width approximately 4 cm; fresh mint towel over nonporous removable barrier; desk tag, camera, raster bounds, and lane guides unchanged; same starting corner and scan direction as blank; row spacing approximately 2-3 cm; target height 2.5 cm; target speed 1 cm/s; turns outside analysis area",
+  "port": "COM4",
+  "baud": 57600,
+  "rsd_interval_s": 0.2,
+  "max_sync_ms": 250.0,
+  "save_video": true
+}

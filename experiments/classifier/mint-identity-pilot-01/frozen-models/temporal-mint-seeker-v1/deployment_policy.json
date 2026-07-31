@@ -1,0 +1,33 @@
+{
+  "policy_version": "presence-gated-active-v1",
+  "model_artifact_version": "temporal-mint-seeker-v1",
+  "odor_presence_threshold": 0.5,
+  "working_spatial_pose_lag_s": 2.0,
+  "working_spatial_pose_lag_rationale": "Conservative directly tested compromise between 1.5 and 2.25 seconds after the fixed-ground-truth lag audit; it reduces the 3-second overcorrection without claiming false precision or a universal physical constant.",
+  "reported_source_center_cm": {
+    "x": 25.355350731,
+    "y": 33.807212754
+  },
+  "application_order": [
+    "compute frozen odor-presence score",
+    "compute frozen temporal state scores",
+    "set active-mint evidence to zero when odor-presence score is below 0.5",
+    "otherwise retain temporal active-mint evidence",
+    "apply the documented 2.0-second working pose correction and spatial gridding"
+  ],
+  "active_mint_rule": "active_mint_gated = temporal_active_mint if odor_presence >= 0.5 else 0",
+  "recovery_rule": "retain temporal mint-recovery evidence without the presence gate because residual recovery may continue as current odor presence falls",
+  "selection_basis": "The 0.5 working boundary is the existing logistic decision threshold and was not selected to clean Horizontal line raster-454.",
+  "known_clean_first_lane_audit": {
+    "readings": 34,
+    "median_odor_presence_score": 0.04743202315377339,
+    "readings_passing_presence_gate": 0,
+    "interpretation": "All startup active-state false positives are rejected by the upstream odor-presence stage."
+  },
+  "model_training_changed": false,
+  "notes": [
+    "The fitted model.joblib artifact and its SHA-256 checksum remain unchanged.",
+    "Apply the gate to individual readings before heatmap smoothing.",
+    "Model evidence scores are not independently calibrated probabilities."
+  ]
+}

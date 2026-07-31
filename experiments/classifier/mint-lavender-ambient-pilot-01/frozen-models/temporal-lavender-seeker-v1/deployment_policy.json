@@ -1,0 +1,12 @@
+{
+  "policy_version": "presence-gated-active-lavender-v1",
+  "model_artifact_version": "temporal-lavender-seeker-v1",
+  "identity_bundle_version": "mint-lavender-ambient-v1",
+  "identity_bundle_sha256": "73d292015272a6fe69ee0bd2ce35f8fd85769068eb6b213b9acaa5ebb5e08b83",
+  "odor_presence_threshold": 0.5,
+  "working_spatial_pose_lag_s": 2.0,
+  "active_lavender_rule": "identity_confirmed_active_lavender = temporal_active_lavender * lavender_given_odor when odor_presence >= 0.5; otherwise 0",
+  "fading_rule": "retain temporal lavender-recovery evidence without the presence gate because a fading state may continue below current odor presence",
+  "selection_basis": "Stationary complete-trial grouped validation only; raster geometry and scores were not used for tuning.",
+  "model_training_changed_after_raster": false
+}

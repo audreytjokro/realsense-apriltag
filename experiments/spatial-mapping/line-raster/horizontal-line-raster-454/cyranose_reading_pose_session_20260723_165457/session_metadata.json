@@ -1,0 +1,13 @@
+{
+  "session_id": "cyranose_reading_pose_session_20260723_165457",
+  "created_at_utc": "2026-07-23T20:54:58.395+00:00",
+  "display_name": "Horizontal line raster-454",
+  "trial_id": "line_raster_mint_moderate_strip_01",
+  "trial_label": "mint_line_raster",
+  "notes": "moderate-source loading pilot; fresh mint paper strip approximately 17 cm long and 3 cm wide; exactly 3 drops placed evenly at approximately 25 50 and 75 percent of strip length; no pooling and no additional oil; five minute wait after application; source strip on clean nonporous barrier over fresh paper towel; bottom-left start with first pass upward; snout positioned before recorder start and motion begins when flag 2 appears; vertical serpentine lanes perpendicular to horizontal strip; fixed desk tag camera source and bounds; lane spacing approximately 2 cm; target height 2.0 cm with intended range 1.5 to 2.5 cm; target speed 1 cm/s; 15 second recovery pause outside source area after each lane; no-contact hover; turns outside analysis area",
+  "port": "COM4",
+  "baud": 57600,
+  "rsd_interval_s": 0.2,
+  "max_sync_ms": 250.0,
+  "save_video": true
+}

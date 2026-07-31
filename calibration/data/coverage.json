@@ -1,0 +1,48 @@
+{
+  "total_frames": 8979,
+  "readable_frames": 8979,
+  "qualified_detection_counts": {
+    "0": 899,
+    "1": 3398,
+    "2": 5486,
+    "3": 342,
+    "4": 440
+  },
+  "qualified_co_visible_counts": {
+    "0-2": 162,
+    "0-3": 7,
+    "1-2": 1253,
+    "2-3": 195,
+    "2-4": 440
+  },
+  "required_ids": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "included_optional_ids": [],
+  "graph_connected": true,
+  "normal_thresholds": {
+    "per_tag": 60,
+    "per_edge": 20
+  },
+  "relaxed_thresholds": {
+    "per_tag": 30,
+    "per_edge": 10
+  },
+  "result": "normal",
+  "recordings": [
+    {
+      "path": "recording.mp4",
+      "expected_frames": 2622,
+      "readable_frames": 2622
+    },
+    {
+      "path": "recordings\\clip_20260720_190930_356324.mp4",
+      "expected_frames": 6357,
+      "readable_frames": 6357
+    }
+  ]
+}

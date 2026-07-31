@@ -1,0 +1,16 @@
+{
+  "session_id": "cyranose_reading_pose_session_20260722_171702",
+  "created_at_utc": "2026-07-22T21:17:03.808+00:00",
+  "trial_id": "line_raster_mint_blotter_retry_01",
+  "trial_label": "mint_line_raster",
+  "notes": "mint-source versus existing clean-background comparison; reference blank line_raster_blank_fresh_01; horizontal 4 cm paper strip on flat ziplock over the same scan area; 5-6 drops applied evenly without pooling; source center endpoints and width marked and photographed; scan started 2 minutes after application; fixed desk tag camera bounds and lane guides; same sequential monotonic serpentine lane order and directions as existing blank; no-contact hover; target height approximately 2.0 cm to match blank median 1.84 cm; target speed 1 cm/s; turns outside analysis area",
+  "port": "COM4",
+  "baud": 57600,
+  "rsd_interval_s": 0.2,
+  "max_sync_ms": 250.0,
+  "save_video": true,
+  "post_run_observations": [
+    "Operator reported that the blotter strip was probably oversaturated; the exact dose is unknown and the original 5-6 drop note should not be treated as reliable.",
+    "Operator intentionally attempted a consistent no-contact hover to match the earlier clean-background scan."
+  ]
+}

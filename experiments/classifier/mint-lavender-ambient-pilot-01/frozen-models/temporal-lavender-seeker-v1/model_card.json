@@ -1,0 +1,57 @@
+{
+  "artifact_version": "temporal-lavender-seeker-v1",
+  "status": "frozen pilot; moving-scan validation required",
+  "frozen_on": "2026-07-28",
+  "source_notebook": "analysis/notebooks/08_mint_lavender_parallel_raster.ipynb",
+  "artifact_file": "model.joblib",
+  "artifact_sha256": "c11d837492b30c2d0c824826c3819749756a73a9698c1992f54ef9d7ff65228a",
+  "training_dataset_sha256": "a7cd386126c071e9c1e7fe29bea57f4365802cfef4c9883269b6e6f2606ca7d3",
+  "training_manifest_sha256": "102ea67a5d5e3777b8e131c044f4d1cac98f7457da2268222f7c6eb289cbc551",
+  "identity_bundle_sha256": "73d292015272a6fe69ee0bd2ce35f8fd85769068eb6b213b9acaa5ebb5e08b83",
+  "training_trial_counts": {
+    "ambient": 15,
+    "mint": 15,
+    "lavender": 15
+  },
+  "state_order": [
+    "active_lavender",
+    "lavender_recovery",
+    "no_active_lavender"
+  ],
+  "selected_feature_name": "Temporal differences (6 s)",
+  "feature_config": {
+    "lookbacks": [
+      0.5,
+      1.5,
+      3.0,
+      6.0
+    ],
+    "ema_taus": []
+  },
+  "regularization_c": 0.3,
+  "minimum_history_s": 6.0,
+  "predeclared_gate": {
+    "balanced_accuracy_min": 0.75,
+    "active_auc_min": 0.9,
+    "fading_auc_min": 0.9,
+    "minimum_state_recall": 0.65
+  },
+  "gate_passed": true,
+  "grouped_snapshot_balanced_accuracy": 0.8396342936932517,
+  "grouped_temporal_balanced_accuracy": 0.8123277494919182,
+  "grouped_temporal_active_lavender_auc": 0.9675007574563713,
+  "grouped_temporal_fading_lavender_auc": 0.9287881133233395,
+  "grouped_temporal_state_recall": {
+    "active_lavender": 0.8701149425287357,
+    "lavender_recovery": 0.709452736318408,
+    "no_active_lavender": 0.8574155696286111
+  },
+  "limitations": [
+    "Current-only balanced accuracy is slightly higher than the causal temporal model in this dataset.",
+    "Only 15 independent lavender exposure/recovery trials are available.",
+    "Lavender was recorded in a later session than the existing mint and ambient trials.",
+    "Stationary PCnose+ phases differ from an open-air moving raster.",
+    "No mixture was used for training or validation.",
+    "Scores are evidence values, not calibrated concentrations."
+  ]
+}

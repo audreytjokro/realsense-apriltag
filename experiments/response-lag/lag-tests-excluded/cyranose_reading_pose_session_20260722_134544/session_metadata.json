@@ -1,0 +1,12 @@
+{
+  "session_id": "cyranose_reading_pose_session_20260722_134544",
+  "created_at_utc": "2026-07-22T17:45:45.738+00:00",
+  "trial_id": "lag_blank_01",
+  "trial_label": "blank_line",
+  "notes": "dry paper towel; same track; speed 1 cm/s; height 2 cm",
+  "port": "COM4",
+  "baud": 57600,
+  "rsd_interval_s": 0.2,
+  "max_sync_ms": 250.0,
+  "save_video": true
+}

@@ -1,0 +1,12 @@
+{
+  "session_id": "cyranose_reading_pose_session_20260727_175116",
+  "created_at_utc": "2026-07-27T21:51:17.515+00:00",
+  "trial_id": "t_raster_mint_lavender_01",
+  "trial_label": "mint_lavender_t_raster",
+  "notes": "exploratory two-source T raster; horizontal mint strip forms top bar; vertical lavender strip forms lower stem; approximately 1 cm physical gap and sources do not touch; exact source dimensions positions and setup photograph recorded separately; fixed desk tag and camera; top-left start with first pass downward; vertical serpentine lanes progressing left to right; lane spacing approximately 2 cm; scan includes background around both sources; target height 2.0 cm with intended range 1.5 to 2.5 cm; target speed 1 cm/s; 15 second recovery pause outside analysis area after each lane; no-contact hover; turns outside analysis area",
+  "port": "COM4",
+  "baud": 57600,
+  "rsd_interval_s": 0.2,
+  "max_sync_ms": 250.0,
+  "save_video": true
+}

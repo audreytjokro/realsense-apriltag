@@ -1,0 +1,63 @@
+{
+  "artifact_version": "temporal-mint-seeker-v1",
+  "status": "frozen pilot; independent spatial validation required",
+  "frozen_on": "2026-07-23",
+  "source_notebook": "analysis/notebooks/06_dynamic_mint_exposure_recovery.ipynb",
+  "artifact_file": "model.joblib",
+  "artifact_sha256": "7a3c3a6e078073f9e0c7e92ba7c3ec91ac0a04f64a12e6bb2f646f60cc4cb2b2",
+  "deployment_policy_file": "deployment_policy.json",
+  "odor_presence_gate_threshold": 0.5,
+  "working_spatial_pose_lag_s": 2.0,
+  "working_spatial_pose_lag_rationale": "Conservative tested compromise between 1.5 and 2.25 s after the fixed-ground-truth lag audit; not a universal physical constant.",
+  "training_dataset_sha256": "acd3b1276b4729a6d1c989efe0c70761b593f56547034a1623aa1c1948cc2a53",
+  "training_manifest_sha256": "dde0ab90796d47a27d25395453e05347c6c52fb5aeea652dfad6adf54951fa82",
+  "training_trial_counts": {
+    "bergamot": 20,
+    "blank": 15,
+    "lemongrass": 20,
+    "mint": 15
+  },
+  "total_independent_trials": 70,
+  "state_order": [
+    "active_mint",
+    "mint_recovery",
+    "no_active_mint"
+  ],
+  "selected_feature_name": "Differences + recovery traces",
+  "feature_config": {
+    "lookbacks": [
+      0.5,
+      1.5,
+      3.0,
+      6.0
+    ],
+    "ema_taus": [
+      1.5,
+      4.0,
+      8.0
+    ]
+  },
+  "regularization_c": 0.3,
+  "minimum_history_s": 6.0,
+  "baseline_rms_limit_pct": 0.050176023641749966,
+  "grouped_validation_balanced_accuracy": 0.8766070732235439,
+  "grouped_validation_active_mint_auc": 0.9821070925014745,
+  "grouped_validation_recovery_auc": 0.9782195064238552,
+  "line_raster_454_presence_gated_source_ranking_auc": 0.9382716049382717,
+  "line_raster_454_presence_gated_outside_rows_above_0_5": 0.2222222222222222,
+  "line_raster_454_presence_gated_score_time_spearman_rho": 0.2843191112255234,
+  "line_raster_454_known_clean_startup_rows": 34,
+  "line_raster_454_known_clean_startup_rows_passing_gate": 0,
+  "line_raster_454_role": "reload test and pilot evaluation only; not training or tuning",
+  "python_version": "3.12.7",
+  "numpy_version": "1.26.4",
+  "pandas_version": "2.2.2",
+  "scikit_learn_version": "1.5.1",
+  "limitations": [
+    "Mint identity is established only against blank, bergamot, and lemongrass in this pilot.",
+    "Only 15 independent mint exposure/recovery trials are available.",
+    "Stationary PCnose+ phases differ from open-air moving raster scans.",
+    "Model scores are not independently calibrated probabilities."
+  ],
+  "next_test": "Apply unchanged to new mint shapes and randomized-order crossings."
+}

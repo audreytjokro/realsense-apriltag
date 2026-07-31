@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.jupyter-test-config/
+.jupyter-test-data/
+.jupyter-test-runtime/
+.ipython-test/
+anaconda_projects/

@@ -1,0 +1,12 @@
+{
+  "session_id": "cyranose_reading_pose_session_20260730_163355",
+  "created_at_utc": "2026-07-30T20:33:56.710+00:00",
+  "trial_id": "2026-07-30_inverted_caret_lavender_left_mint_right_random_10min_run01",
+  "trial_label": "inverted_caret_lavender_left_mint_right_random",
+  "notes": "10-minute host-timed random-waypoint moving sequence; 26.5 x 26.5 cm paper; inverted caret V layout with lavender on left diagonal and mint on right diagonal; sources approach near the bottom but do not touch or overlap; approximately 3-5 cm closest gap; layout fixed; hover without contact; natural speed variation; no systematic height change over sources",
+  "port": "COM4",
+  "baud": 57600,
+  "rsd_interval_s": 0.2,
+  "max_sync_ms": 250.0,
+  "save_video": true
+}

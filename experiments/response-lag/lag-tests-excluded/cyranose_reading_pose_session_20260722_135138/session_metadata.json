@@ -1,0 +1,12 @@
+{
+  "session_id": "cyranose_reading_pose_session_20260722_135138",
+  "created_at_utc": "2026-07-22T17:51:39.640+00:00",
+  "trial_id": "lag_rev_02",
+  "trial_label": "mint_line",
+  "notes": "reverse; same track as lag_fwd_02; width 4 cm; line center 2 cm from tag; speed 1 cm/s; height 2 cm",
+  "port": "COM4",
+  "baud": 57600,
+  "rsd_interval_s": 0.2,
+  "max_sync_ms": 250.0,
+  "save_video": true
+}

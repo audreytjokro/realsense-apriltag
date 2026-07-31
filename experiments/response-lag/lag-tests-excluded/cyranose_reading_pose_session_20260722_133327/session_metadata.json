@@ -1,0 +1,12 @@
+{
+  "session_id": "cyranose_reading_pose_session_20260722_133327",
+  "created_at_utc": "2026-07-22T17:33:28.788+00:00",
+  "trial_id": "lag_rev_01",
+  "trial_label": "mint_line",
+  "notes": "reverse; paper towel; target speed 1 cm/s; target height 2 cm; record actual line width",
+  "port": "COM4",
+  "baud": 57600,
+  "rsd_interval_s": 0.2,
+  "max_sync_ms": 250.0,
+  "save_video": true
+}

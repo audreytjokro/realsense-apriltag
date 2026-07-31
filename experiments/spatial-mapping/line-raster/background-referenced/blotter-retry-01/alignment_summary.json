@@ -1,0 +1,26 @@
+{
+  "timestamp_basis": "serial_request_midpoint",
+  "max_sync_ms": 250.0,
+  "total_readings": 268,
+  "matched_readings": 268,
+  "rejected_readings": 0,
+  "match_rate_percent": 100.0,
+  "signed_pose_minus_pcnose_ms": {
+    "median": 55.407025,
+    "p95": 92.544552,
+    "p99": 98.028572,
+    "maximum": 103.233
+  },
+  "absolute_pose_minus_pcnose_ms": {
+    "median": 55.7246,
+    "p95": 93.085175,
+    "p99": 98.648456,
+    "maximum": 228.21865
+  },
+  "serial_roundtrip_ms": {
+    "median": 356.2291,
+    "p95": 358.368015,
+    "p99": 359.033218,
+    "maximum": 359.7086
+  }
+}
