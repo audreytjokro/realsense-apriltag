@@ -125,6 +125,27 @@ stages can be added without renaming the earlier data.
   treated a fast Cyranose device counter as wall-clock seconds. The recorder
   files themselves remain valid. The guide now derives elapsed time from the
   host midpoint timestamp; the latest run confirms the corrected behavior.
+- The August 3 long-sequence batch adds six reviewed recordings: two X-shape
+  runs with mint on the backslash and lavender on the forward slash, two
+  90-degree-rotated X replicates, one inverted-caret run with lavender on the
+  left and mint on the right, and one parallel-strip run with mint above
+  lavender. Their host-timed durations range from 10.36 to 11.17 minutes and
+  contain 1,105-1,179 flag-2 readings apiece.
+- All six August 3 recordings have complete 32-channel sensor vectors and
+  100% pose/readout matching inside the 250 ms threshold; p95 absolute timing
+  offsets are 91.4-95.7 ms. After the existing 2.0 s spatial correction,
+  paper-boundary check, and 1.0-3.5 cm height filter, 52.3-91.9% of flag-2
+  readings remain. The first X run is retained with a low-height-coverage QC
+  note. The first rotated-X run contains one isolated S11 acquisition spike,
+  which should remain in the raw file but be masked or median-filtered during
+  analysis. These are usable sequence recordings, not yet evidence that the
+  corresponding source geometries were reconstructed successfully.
+- The six August 3 MP4 files decode without errors but are time-compressed:
+  they play for approximately 3.85-4.30 minutes while their CSV host
+  timestamps span 10.36-11.17 minutes. The writer labels the video with the
+  camera's nominal frame rate while the pose-processing loop supplies frames
+  more slowly. Use the CSV host timestamps for sensor-pose analysis and do not
+  align odor readings from MP4 playback time.
 - Applied to the existing rasters, median combined mint score is 0.000 for the
   clean blank and 0.805 for the blotter mint run; 77.0% of retained mint rows
   exceed the working 0.5 score threshold. These are uncalibrated pilot scores,
@@ -262,6 +283,7 @@ record_cyranose_reading_pose.py  Main synchronized recorder
 random_waypoint_guide.py         Optional waypoint suggestions and run timer
 track_calibrated_cyranose_pose.py Live calibrated pose display
 pcnose_serial.py                 Direct Cyranose serial protocol support
+cyranose_reading_pose_session_*/ Newly recorded raw sessions pending promotion
 ```
 
 The complete recording index is in
@@ -358,6 +380,10 @@ jupyter lab analysis/notebooks/07_mint_lavender_ambient_classifier.ipynb
 - `pcnose_device_time_s` is useful for inspecting the device sequence, but in
   these recordings it did not advance at wall-clock speed. Do not interpret it
   as physical seconds.
+- MP4 playback duration is not a reliable wall-clock basis in recordings made
+  by the current synchronous video-writing loop. A video may contain frames
+  from the full session while playing substantially faster than real time.
+  Use the host-timestamped CSV pose rows for temporal alignment.
 - Flag 0 is the idle/pre-run state observed in this workflow.
 - Flag 1 is the purge/reference phase.
 - Flag 2 is the sample-intake/measurement phase.

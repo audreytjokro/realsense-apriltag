@@ -1,0 +1,12 @@
+{
+  "session_id": "cyranose_reading_pose_session_20260803_164023",
+  "created_at_utc": "2026-08-03T20:40:25.063+00:00",
+  "trial_id": "2026-08-03_inverted_caret_lavender_left_mint_right_random_10min_run01",
+  "trial_label": "inverted_caret_lavender_left_mint_right_random",
+  "notes": "10-minute host-timed random-motion inverted-caret V sequence; 26.5 x 26.5 cm paper; lavender forms left backslash arm and mint forms right forward-slash arm; strips approximately 27.7 x 2 cm; sources approach near the bottom but do not touch; record actual closest gap; layout fixed; hover without contact; natural speed variation; sample clean background around and between both arms; no systematic height change over sources",
+  "port": "COM4",
+  "baud": 57600,
+  "rsd_interval_s": 0.2,
+  "max_sync_ms": 250.0,
+  "save_video": true
+}
