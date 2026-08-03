@@ -146,6 +146,18 @@ stages can be added without renaming the earlier data.
   camera's nominal frame rate while the pose-processing loop supplies frames
   more slowly. Use the CSV host timestamps for sensor-pose analysis and do not
   align odor readings from MP4 playback time.
+- Notebook 10 audits all 11 reviewed July 30 and August 3 long sequences with
+  one read-only QC policy. All 11 pass the analysis-readiness gate: every CSV
+  has complete 32-channel rows, at least 99% accepted smell/pose matches, and
+  158-182 occupied 2 cm cells after the strict spatial rules. The first August
+  X run is retained with a height-coverage caution, and the 15:44:20 X run has
+  one isolated acquisition row that is flagged and causally median-filtered.
+  Six-run trajectories are colored green/yellow/red for early/middle/late
+  time, and 32-sensor heatmaps show exact per-channel contributions to the
+  frozen mint-versus-lavender identity logit. An exploratory transition audit
+  is strongly mint-dominant and stable to 0.5-1.5 cm source-mask margins, but
+  it is explicitly treated as possible sensor/model carryover rather than
+  proof of physical odor transfer.
 - Applied to the existing rasters, median combined mint score is 0.000 for the
   clean blank and 0.805 for the blotter mint run; 77.0% of retained mint rows
   exceed the working 0.5 score threshold. These are uncalibrated pilot scores,
@@ -359,6 +371,8 @@ jupyter lab analysis/notebooks/06_dynamic_mint_exposure_recovery.ipynb
 jupyter lab analysis/notebooks/07_mint_lavender_ambient_classifier.ipynb
 jupyter lab analysis/notebooks/08_mint_lavender_parallel_raster.ipynb
 jupyter lab analysis/notebooks/09_long_random_sequence_shape_maps.ipynb
+jupyter lab analysis/notebooks/10_long_sequence_qc_transfer_and_32d.ipynb
+jupyter lab analysis/notebooks/11_cleaning_schema_and_sequence_holdout.ipynb
 ```
 
 The numbered notebooks are saved with their outputs, so they can be inspected without
@@ -448,6 +462,21 @@ For current analyses, use the latter half of flag 1 as the per-run reference.
   evidence, and scores shape ranking against explicitly approximate source
   overlays. It finds the clearest spatial structure in the mint-only run and
   does not claim clean caret/V or lavender recovery.
+- [`analysis/notebooks/10_long_sequence_qc_transfer_and_32d.ipynb`](analysis/notebooks/10_long_sequence_qc_transfer_and_32d.ipynb)
+  audits all 11 reviewed long sequences, defines the first reproducible
+  cleaning contract, visualizes the six August 3 trajectories, decomposes the
+  frozen identity score into all 32 sensor contributions, and tests early
+  mint-to-lavender versus lavender-to-mint transition patterns. Its source
+  masks are protocol approximations and its repeated transitions are
+  descriptive within-run events, not independent causal trials.
+- [`analysis/notebooks/11_cleaning_schema_and_sequence_holdout.ipynb`](analysis/notebooks/11_cleaning_schema_and_sequence_holdout.ipynb)
+  freezes `long-sequence-cleaning-v1`, preserves all 11,082 source rows in an
+  auditable processed table, and trains a deliberately simple regularized
+  causal classifier on ten complete recordings while holding out the complete
+  August parallel-strip recording. Temporal context improves primary holdout
+  macro recall from 0.537 to 0.663, but median three-class whole-recording
+  recall is only 0.516; the saved artifact is therefore a reproducible pilot,
+  not a validated final odor model.
 
 ## Interpreting the current background-referenced raster
 

@@ -101,6 +101,24 @@ short interpretation. They are saved with executed outputs.
    evidence. The caret/V shapes are therefore not cleanly reconstructed,
    especially for lavender; the result is a useful partial/negative moving
    transfer audit rather than evidence of corrupted data.
+10. `notebooks/10_long_sequence_qc_transfer_and_32d.ipynb`: cross-batch QC and
+   exploratory sequence audit for all 11 reviewed July 30 and August 3 runs.
+   It applies one read-only cleaning policy, displays the six newest
+   trajectories with green/yellow/red time progression, and shows every
+   sensor's exact contribution to the frozen mint-versus-lavender identity
+   logit. All 11 runs pass the stated readiness gate. The directional
+   transition result is strongly mint-dominant but remains descriptive because
+   source geometry is approximate and repeated events within a run are not
+   independent.
+11. `notebooks/11_cleaning_schema_and_sequence_holdout.ipynb`: freezes the
+   first long-sequence cleaning contract and exports every raw row with its
+   32 raw, normalized, and causal-filtered channels plus pose, geometry,
+   eligibility, and exclusion provenance. It predeclares `20260803_170357` as
+   the complete primary holdout, trains on the other ten recordings, and uses
+   fixed-spec leave-one-recording-out auditing. Temporal features improve the
+   primary macro recall from 0.537 to 0.663, while the median across nine
+   three-class held-out runs is 0.516. This supports continued pilot work, not
+   a claim of generalizable chemical identification.
 
 Supporting folders:
 

@@ -252,3 +252,24 @@ Contamination-suspected control attempt:
 - do not use this run as a clean control or classifier-training example;
 - it has been superseded for pilot comparison by the reviewed clean-block-01
   blank-first/mint-second pair, which is itself not valid for geometry scoring.
+
+## Cross-batch long-sequence analysis
+
+`analysis/notebooks/10_long_sequence_qc_transfer_and_32d.ipynb` audits the 11
+reviewed recordings in `long-sequence/2026-07-30_batch-01/runs/` and
+`long-sequence/2026-08-03_batch-01/runs/`. It does not modify the raw sessions.
+All 11 pass its declared acquisition/spatial readiness gate. One August run is
+retained with a height-coverage caution and one has a single isolated sensor
+row flagged for causal median filtering. Its mint-to-lavender and
+lavender-to-mint event summaries use protocol-approximate source masks and are
+descriptive repeated within-run observations, not independent transfer trials.
+
+Notebook 11 freezes `long-sequence-cleaning-v1` and writes the processed export
+to `long-sequence/processed/cleaning-v1/`. The table conserves all 11,082 raw
+rows and records raw-file hashes, row indices, 32 raw channels, 32 normalized
+channels, 32 causal model channels, pose gaps, paper coordinates, height and
+source eligibility, and explicit exclusion reasons. The primary pilot trains
+on ten complete recordings and leaves `20260803_170357` untouched. Its causal
+temporal macro recall is 0.663 on that holdout versus 0.537 current-only;
+median temporal macro recall across the nine three-class whole-run folds is
+0.516, so the saved model remains exploratory.

@@ -29,6 +29,20 @@ Reviewed batches:
   contains the six reviewed X-shape, inverted-caret, and parallel-strip
   long-sequence recordings collected on August 3.
 
+Cross-batch analysis is in
+[`../../analysis/notebooks/10_long_sequence_qc_transfer_and_32d.ipynb`](../../analysis/notebooks/10_long_sequence_qc_transfer_and_32d.ipynb).
+It audits all 11 reviewed runs without rewriting raw data, defines the proposed
+first cleaning contract, visualizes the six August trajectories, preserves all
+32 sensor dimensions in the identity-contribution view, and reports an
+exploratory directional carryover pattern with explicit geometry and
+independence limitations.
+
+The versioned processed export and pilot sequence model are under
+[`processed/cleaning-v1/`](processed/cleaning-v1/). Notebook 11 preserves all
+11,082 raw rows with explicit lineage and exclusion reasons, then holds out one
+complete recording for evaluation. This is the first frozen preprocessing
+contract; the accompanying classifier remains a small-data pilot.
+
 The waypoint guide now derives elapsed time from the recorder's host midpoint
 timestamp. In the first July 30 batch, the earlier guide used the Cyranose
 device counter, which advanced about 1.6 times faster than wall clock. This
