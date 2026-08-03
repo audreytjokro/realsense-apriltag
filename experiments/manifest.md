@@ -116,7 +116,7 @@ Current two-source parallel-strip analysis:
 Current long random-sequence analysis:
 
 - the five promoted July 30 sessions are stored together under
-  `spatial-mapping/random-waypoint-sequences/2026-07-30-long-sequence-pilot-01/`;
+  `long-sequence/2026-07-30_batch-01/runs/`;
 - every promoted run has 100% pose/readout matching within 250 ms, complete
   32-channel readings, and usable paper-local pose coverage;
 - notebook 09 hash-verifies and applies the frozen identity, mint-temporal, and

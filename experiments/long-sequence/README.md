@@ -21,10 +21,13 @@ room conditions, and a setup photograph with the reviewed session.
 
 Reviewed batches:
 
-- [`2026-07-30-long-sequence-pilot-01/`](2026-07-30-long-sequence-pilot-01/)
+- [`2026-07-30_batch-01/`](2026-07-30_batch-01/)
   contains the five usable mint/lavender horizontal, caret, and inverted-caret
   sequences plus one preserved aborted start. Notebook 09 performs the current
   shape-preservation audit.
+- [`2026-08-03_batch-01/`](2026-08-03_batch-01/)
+  contains the six reviewed X-shape, inverted-caret, and parallel-strip
+  long-sequence recordings collected on August 3.
 
 The waypoint guide now derives elapsed time from the recorder's host midpoint
 timestamp. In the first July 30 batch, the earlier guide used the Cyranose

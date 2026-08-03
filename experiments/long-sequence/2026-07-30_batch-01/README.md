@@ -17,7 +17,7 @@ vectors.
 | Inverted caret: lavender left, mint right | `20260730_163355` | 619.3 s | 1,114 | 89.7 ms | Usable |
 
 The five-second `20260730_152653` mint-only start is preserved under
-`excluded-aborted/` and is not analyzed.
+`excluded/` and is not analyzed.
 
 ## Timing note
 
@@ -35,7 +35,7 @@ and must not be interpreted as physical seconds.
 
 ## Shape analysis
 
-[`09_long_random_sequence_shape_maps.ipynb`](../../../../analysis/notebooks/09_long_random_sequence_shape_maps.ipynb)
+[`09_long_random_sequence_shape_maps.ipynb`](../../../analysis/notebooks/09_long_random_sequence_shape_maps.ipynb)
 loads the three frozen pilot bundles without retraining and applies one fixed
 analysis policy to all five runs:
 
@@ -58,4 +58,4 @@ or inverted-caret geometry. The lavender-only run is approximately chance for
 lavender localization. These are usable recordings with a negative/partial
 model-transfer result, not corrupted acquisitions.
 
-See `trial_manifest.csv` for the compact batch index.
+See `manifest.csv` for the compact batch index.

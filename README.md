@@ -271,8 +271,10 @@ experiments/
     line-raster/horizontal-line-raster-454/ Current three-drop horizontal-line pilot
     line-raster/excluded-controls/ Preserved controls excluded from primary comparison
     parallel-strips/mint-lavender-parallel-pilot-01/ Current two-source transfer pilot
-    random-waypoint-sequences/2026-07-30-long-sequence-pilot-01/ Long random-motion batch
     superseded-pilots/mint-lavender-t-pilot-01/ Preserved earlier T diagnostic
+  long-sequence/
+    2026-07-30_batch-01/       July 30 random-motion batch
+    2026-08-03_batch-01/       August 3 long-sequence batch
 analysis/
   notebooks/                     Primary analysis and visualization files
   reports/                       Optional notebook exports for easy viewing
@@ -339,7 +341,7 @@ advances the optional suggestion. `Q`, Escape, or closing the guide window
 stops only the guide. The displayed 600-second alert does not stop the
 Cyranose + RealSense recorder; stop that recorder manually in its own camera
 window. Long random-motion sessions belong under
-`experiments/spatial-mapping/random-waypoint-sequences/` after review.
+`experiments/long-sequence/` after review.
 
 The elapsed display uses the recorder's host midpoint timestamp, not
 `pcnose_device_time_s`. Older July 30 waypoint logs still have valid
