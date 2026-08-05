@@ -385,7 +385,7 @@ def generate_loso_report(manifest_path: Path) -> Path:
     primary = _plot_loso_primary(groups, figures / "primary_metrics.png")
     confusion = _plot_loso_area_confusions(groups, figures / "area_confusion_matrices.png")
     session_layouts = {
-        info.run_directory.name: load_annotation(info).source_polygons_paper_cm
+        info.slug: load_annotation(info).source_polygons_paper_cm
         for info in discover_sessions()
     }
     area_spatial_paths = []

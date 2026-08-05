@@ -203,15 +203,15 @@ def _session_info(
     trial_id: str = "trial",
     layout: str = LAYOUTS[0],
 ) -> SessionInfo:
-    run_directory = root / f"run-{session_id}"
-    session_directory = run_directory / f"cyranose_reading_pose_session_{session_id}"
+    slug = f"run-{session_id}"
+    session_directory = root / "runs" / f"cyranose_reading_pose_session_{session_id}"
     session_directory.mkdir(parents=True, exist_ok=True)
     sources = tuple(name for name in ("mint", "lavender") if name in layout)
     return SessionInfo(
         session_id=session_id,
         trial_id=trial_id,
+        slug=slug,
         layout=layout,
-        run_directory=run_directory,
         session_directory=session_directory,
         csv_path=session_directory / "cyranose_reading_pose.csv",
         video_path=session_directory / "rectified_rgb.mp4",
@@ -249,8 +249,8 @@ def _manual_session(row_count: int = 28) -> SessionData:
     info = SessionInfo(
         "session",
         "trial",
+        "session",
         "mint-only",
-        Path("."),
         Path("."),
         Path("data.csv"),
         Path("video.mp4"),
@@ -826,8 +826,8 @@ class ProtocolTests(unittest.TestCase):
             current.info = SessionInfo(
                 f"id-{index}",
                 f"trial-{index}",
+                f"session-{index}",
                 "mint-lavender",
-                Path(f"session-{index}"),
                 Path(f"recording-{index}"),
                 Path(f"data-{index}.csv"),
                 Path(f"video-{index}.mp4"),
@@ -1620,6 +1620,7 @@ class TrainingAndVideoTests(unittest.TestCase):
                     {
                         "session": session_id,
                         "trial_id": trial_id,
+                        "slug": info.slug,
                         "layout": layout,
                         "host_duration_s": 50,
                         "readings": len(frame),
@@ -1629,7 +1630,7 @@ class TrainingAndVideoTests(unittest.TestCase):
                     }
                 )
                 infos.append(info)
-            pd.DataFrame(manifest_rows).to_csv(root / "trial_manifest.csv", index=False)
+            pd.DataFrame(manifest_rows).to_csv(root / "manifest.csv", index=False)
             for info in infos:
                 polygons = {}
                 if "mint" in info.source_names:
@@ -1767,7 +1768,7 @@ class TrainingAndVideoTests(unittest.TestCase):
                 self.assertEqual(len(aggregate["raw_row"]), 5 * 57)
 
             loso_output = Path(temporary) / "loso-output"
-            held_out = infos[0].run_directory.name
+            held_out = infos[0].slug
             loso_config = RunConfig(
                 architecture="temporal-cnn",
                 temporal_mode="bidirectional",

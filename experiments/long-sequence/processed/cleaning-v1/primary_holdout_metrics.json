@@ -1,0 +1,68 @@
+{
+  "primary_holdout_session": "20260803_170357",
+  "training_recordings": 10,
+  "test_recordings": 1,
+  "test_rows_after_1_5s_thinning": 333,
+  "current_only": {
+    "present_class_macro_recall": 0.5365579196217495,
+    "macro_f1": 0.4248276233570351,
+    "per_class_recall": {
+      "background": 0.404,
+      "mint": 0.3333333333333333,
+      "lavender": 0.8723404255319149
+    },
+    "confusion_matrix_class_order": [
+      "background",
+      "mint",
+      "lavender"
+    ],
+    "confusion_matrix": [
+      [
+        101,
+        16,
+        133
+      ],
+      [
+        7,
+        12,
+        17
+      ],
+      [
+        6,
+        0,
+        41
+      ]
+    ]
+  },
+  "causal_temporal": {
+    "present_class_macro_recall": 0.663317572892041,
+    "macro_f1": 0.5189193962481852,
+    "per_class_recall": {
+      "background": 0.5,
+      "mint": 0.6388888888888888,
+      "lavender": 0.851063829787234
+    },
+    "confusion_matrix_class_order": [
+      "background",
+      "mint",
+      "lavender"
+    ],
+    "confusion_matrix": [
+      [
+        125,
+        39,
+        86
+      ],
+      [
+        8,
+        23,
+        5
+      ],
+      [
+        6,
+        1,
+        40
+      ]
+    ]
+  }
+}

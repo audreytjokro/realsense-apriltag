@@ -1,0 +1,12 @@
+{
+  "session_id": "cyranose_reading_pose_session_20260803_160842",
+  "created_at_utc": "2026-08-03T20:08:43.943+00:00",
+  "trial_id": "2026-08-03_x_lavender_backslash_mint_slash_rotated90_random_10min_run04",
+  "trial_label": "x_lavender_backslash_mint_slash_rotated90_random",
+  "notes": "10-minute host-timed random-motion rotated X-shape replicate; same rotated setup as run03; lavender forms backslash and mint forms forward slash in fixed desk coordinates; two approximately 27.7 x 2 cm strips; camera desk AprilTag source loading and top strip unchanged; hover without contact; natural speed variation; sample clean corners and both diagonals; no systematic height change over sources",
+  "port": "COM4",
+  "baud": 57600,
+  "rsd_interval_s": 0.2,
+  "max_sync_ms": 250.0,
+  "save_video": true
+}

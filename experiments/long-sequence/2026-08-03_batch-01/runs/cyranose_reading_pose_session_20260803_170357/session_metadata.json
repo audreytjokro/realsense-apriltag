@@ -1,0 +1,12 @@
+{
+  "session_id": "cyranose_reading_pose_session_20260803_170357",
+  "created_at_utc": "2026-08-03T21:03:59.023+00:00",
+  "trial_id": "2026-08-03_parallel_mint_top_lavender_bottom_random_10min_run01",
+  "trial_label": "parallel_mint_top_lavender_bottom_random",
+  "notes": "10-minute host-timed random-motion parallel-strip sequence; 26.5 x 26.5 cm paper; horizontal mint strip on top and horizontal lavender strip below; strips approximately 2 cm wide; record actual retained length spacing and any overhang; sources do not touch; layout fixed; hover without contact; natural speed variation; sample clean background above between and below sources; no systematic height change over sources",
+  "port": "COM4",
+  "baud": 57600,
+  "rsd_interval_s": 0.2,
+  "max_sync_ms": 250.0,
+  "save_video": true
+}

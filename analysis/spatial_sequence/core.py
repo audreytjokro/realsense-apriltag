@@ -19,9 +19,8 @@ REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 EXPERIMENT_ROOT = (
     REPOSITORY_ROOT
     / "experiments"
-    / "spatial-mapping"
-    / "random-waypoint-sequences"
-    / "2026-07-30-long-sequence-pilot-01"
+    / "long-sequence"
+    / "2026-07-30_batch-01"
 )
 CAMERA_INTRINSICS_PATH = REPOSITORY_ROOT / "calibration" / "data" / "camera_intrinsics.json"
 ANNOTATION_FILENAME = "spatial_annotation.json"
@@ -50,8 +49,8 @@ VELOCITY_MIN_SPAN_S = 1.5
 class SessionInfo:
     session_id: str
     trial_id: str
+    slug: str
     layout: str
-    run_directory: Path
     session_directory: Path
     csv_path: Path
     video_path: Path
@@ -183,24 +182,31 @@ def _source_names(layout: str) -> tuple[str, ...]:
     return names
 
 
+def _session_slug(trial_id: str) -> str:
+    prefix, separator, remainder = trial_id.partition("_")
+    if not separator or not prefix.startswith("2026-"):
+        raise ValueError(f"Cannot derive session slug from trial_id: {trial_id!r}")
+    normalized = remainder.replace("_random_10min_", "_")
+    return normalized.replace("_", "-")
+
+
 def discover_sessions(experiment_root: Path = EXPERIMENT_ROOT) -> list[SessionInfo]:
-    manifest_path = experiment_root / "trial_manifest.csv"
+    manifest_path = experiment_root / "manifest.csv"
     sessions: list[SessionInfo] = []
     with manifest_path.open(newline="", encoding="utf-8") as handle:
         for row in csv.DictReader(handle):
             if row["analysis_status"] != "usable":
                 continue
             session_id = row["session"]
-            matches = list(
-                experiment_root.glob(
-                    f"*/cyranose_reading_pose_session_{session_id}"
-                )
+            session_directory = (
+                experiment_root
+                / "runs"
+                / f"cyranose_reading_pose_session_{session_id}"
             )
-            if len(matches) != 1:
+            if not session_directory.is_dir():
                 raise FileNotFoundError(
-                    f"Expected one directory for session {session_id}, found {matches}"
+                    f"Expected session directory for {session_id}: {session_directory}"
                 )
-            session_directory = matches[0]
             video_path = session_directory / "rectified_rgb.mp4"
             csv_path = session_directory / "cyranose_reading_pose.csv"
             if not csv_path.is_file() or not video_path.is_file():
@@ -209,8 +215,9 @@ def discover_sessions(experiment_root: Path = EXPERIMENT_ROOT) -> list[SessionIn
                 SessionInfo(
                     session_id=session_id,
                     trial_id=row["trial_id"],
+                    slug=(row.get("slug") or "").strip()
+                    or _session_slug(row["trial_id"]),
                     layout=row["layout"],
-                    run_directory=session_directory.parent,
                     session_directory=session_directory,
                     csv_path=csv_path,
                     video_path=video_path,
@@ -231,7 +238,7 @@ def resolve_session(value: str, sessions: Sequence[SessionInfo]) -> SessionInfo:
         in {
             session.session_id,
             session.trial_id,
-            session.run_directory.name,
+            session.slug,
             session.session_directory.name,
         }
     ]

@@ -1,0 +1,409 @@
+{
+  "schema_version": "long-sequence-cleaning-v1",
+  "status": "frozen pilot preprocessing contract",
+  "created_by": "Notebook 11",
+  "raw_data_policy": "Raw CSV and MP4 files are read-only and never rewritten.",
+  "time_basis": "pcnose_sample_time_estimate_utc, derived from the host serial-request midpoint",
+  "paper_registration": {
+    "paper_size_cm": [
+      26.5,
+      26.5
+    ],
+    "paper_x_cm": "40.0 - snout_desk_x_cm",
+    "paper_y_cm": "46.5 - snout_desk_y_cm"
+  },
+  "rules": {
+    "baseline": "Per run: median of the latter half of flag-1 rows, independently for each sensor.",
+    "normalized_response": "100 * (raw resistance - baseline) / abs(baseline).",
+    "model_response": "Trailing causal 3-row median of each normalized channel.",
+    "isolated_spike": "Current row differs >10% from agreeing adjacent rows whose mutual difference is <3%; flag-2 rows only.",
+    "physical_response_lag_s": 2.0,
+    "maximum_lag_corrected_pose_gap_s": 1.5,
+    "height_band_cm": [
+      1.0,
+      3.5
+    ],
+    "minimum_temporal_history_s": 6.0,
+    "source_mask_margin_cm": 1.0,
+    "source_overlap_policy": "Label overlap and exclude from sequence-model training/evaluation.",
+    "spike_policy": "Preserve the raw row and filtered channels, flag it, and exclude that timestamp from model training/evaluation.",
+    "evaluation_thinning_s": 1.5
+  },
+  "eligibility": {
+    "spatial_analysis_eligible": "Stored alignment valid; lag-corrected pose available; inside paper; height within 1.0-3.5 cm.",
+    "sequence_model_eligible": "Flag 2; complete sensors; >=6 s history; no isolated spike; valid stored and lag-corrected pose; inside paper; height pass; non-overlap background/mint/lavender label."
+  },
+  "source_geometry": {
+    "horizontal": {
+      "start_xy_cm": [
+        4.75,
+        13.25
+      ],
+      "end_xy_cm": [
+        21.75,
+        13.25
+      ],
+      "width_cm": 3.0
+    },
+    "caret_left": {
+      "start_xy_cm": [
+        4.75,
+        21.5
+      ],
+      "end_xy_cm": [
+        11.25,
+        5.0
+      ],
+      "width_cm": 3.0
+    },
+    "caret_right": {
+      "start_xy_cm": [
+        15.25,
+        5.0
+      ],
+      "end_xy_cm": [
+        21.75,
+        21.5
+      ],
+      "width_cm": 3.0
+    },
+    "inverted_left": {
+      "start_xy_cm": [
+        4.75,
+        5.0
+      ],
+      "end_xy_cm": [
+        11.25,
+        21.5
+      ],
+      "width_cm": 3.0
+    },
+    "inverted_right": {
+      "start_xy_cm": [
+        15.25,
+        21.5
+      ],
+      "end_xy_cm": [
+        21.75,
+        5.0
+      ],
+      "width_cm": 3.0
+    },
+    "x_backslash": {
+      "start_xy_cm": [
+        3.5,
+        3.5
+      ],
+      "end_xy_cm": [
+        23.0,
+        23.0
+      ],
+      "width_cm": 2.0
+    },
+    "x_slash": {
+      "start_xy_cm": [
+        3.5,
+        23.0
+      ],
+      "end_xy_cm": [
+        23.0,
+        3.5
+      ],
+      "width_cm": 2.0
+    },
+    "aug_inverted_left": {
+      "start_xy_cm": [
+        3.5,
+        3.5
+      ],
+      "end_xy_cm": [
+        11.25,
+        23.0
+      ],
+      "width_cm": 2.0
+    },
+    "aug_inverted_right": {
+      "start_xy_cm": [
+        23.0,
+        3.5
+      ],
+      "end_xy_cm": [
+        15.25,
+        23.0
+      ],
+      "width_cm": 2.0
+    },
+    "parallel_top": {
+      "start_xy_cm": [
+        4.75,
+        7.0
+      ],
+      "end_xy_cm": [
+        21.75,
+        7.0
+      ],
+      "width_cm": 2.0
+    },
+    "parallel_bottom": {
+      "start_xy_cm": [
+        4.75,
+        19.75
+      ],
+      "end_xy_cm": [
+        21.75,
+        19.75
+      ],
+      "width_cm": 2.0
+    }
+  },
+  "run_source_assignments": {
+    "20260730_152754": {
+      "layout": "mint horizontal",
+      "mint_segments": [
+        "horizontal"
+      ],
+      "lavender_segments": []
+    },
+    "20260730_153631": {
+      "layout": "caret mint-left lavender-right",
+      "mint_segments": [
+        "caret_left"
+      ],
+      "lavender_segments": [
+        "caret_right"
+      ]
+    },
+    "20260730_154848": {
+      "layout": "caret lavender-left mint-right",
+      "mint_segments": [
+        "caret_right"
+      ],
+      "lavender_segments": [
+        "caret_left"
+      ]
+    },
+    "20260730_161358": {
+      "layout": "lavender horizontal",
+      "mint_segments": [],
+      "lavender_segments": [
+        "horizontal"
+      ]
+    },
+    "20260730_163355": {
+      "layout": "inverted caret lavender-left mint-right",
+      "mint_segments": [
+        "inverted_right"
+      ],
+      "lavender_segments": [
+        "inverted_left"
+      ]
+    },
+    "20260803_144217": {
+      "layout": "X mint-backslash lavender-slash 01",
+      "mint_segments": [
+        "x_backslash"
+      ],
+      "lavender_segments": [
+        "x_slash"
+      ]
+    },
+    "20260803_150952": {
+      "layout": "X mint-backslash lavender-slash 02",
+      "mint_segments": [
+        "x_backslash"
+      ],
+      "lavender_segments": [
+        "x_slash"
+      ]
+    },
+    "20260803_154420": {
+      "layout": "X lavender-backslash mint-slash 03",
+      "mint_segments": [
+        "x_slash"
+      ],
+      "lavender_segments": [
+        "x_backslash"
+      ]
+    },
+    "20260803_160842": {
+      "layout": "X lavender-backslash mint-slash 04",
+      "mint_segments": [
+        "x_slash"
+      ],
+      "lavender_segments": [
+        "x_backslash"
+      ]
+    },
+    "20260803_164023": {
+      "layout": "inverted caret lavender-left mint-right",
+      "mint_segments": [
+        "aug_inverted_right"
+      ],
+      "lavender_segments": [
+        "aug_inverted_left"
+      ]
+    },
+    "20260803_170357": {
+      "layout": "parallel mint-top lavender-bottom",
+      "mint_segments": [
+        "parallel_top"
+      ],
+      "lavender_segments": [
+        "parallel_bottom"
+      ]
+    }
+  },
+  "field_groups": {
+    "provenance": [
+      "session_id",
+      "raw_csv_relative_path",
+      "raw_csv_sha256",
+      "raw_row_index"
+    ],
+    "time": [
+      "host_time_utc",
+      "host_elapsed_s",
+      "pcnose_flag"
+    ],
+    "raw_resistance_kohm": [
+      "raw_S1_kohm",
+      "raw_S2_kohm",
+      "raw_S3_kohm",
+      "raw_S4_kohm",
+      "raw_S5_kohm",
+      "raw_S6_kohm",
+      "raw_S7_kohm",
+      "raw_S8_kohm",
+      "raw_S9_kohm",
+      "raw_S10_kohm",
+      "raw_S11_kohm",
+      "raw_S12_kohm",
+      "raw_S13_kohm",
+      "raw_S14_kohm",
+      "raw_S15_kohm",
+      "raw_S16_kohm",
+      "raw_S17_kohm",
+      "raw_S18_kohm",
+      "raw_S19_kohm",
+      "raw_S20_kohm",
+      "raw_S21_kohm",
+      "raw_S22_kohm",
+      "raw_S23_kohm",
+      "raw_S24_kohm",
+      "raw_S25_kohm",
+      "raw_S26_kohm",
+      "raw_S27_kohm",
+      "raw_S28_kohm",
+      "raw_S29_kohm",
+      "raw_S30_kohm",
+      "raw_S31_kohm",
+      "raw_S32_kohm"
+    ],
+    "baseline_normalized_percent": [
+      "baseline_normalized_S1_pct",
+      "baseline_normalized_S2_pct",
+      "baseline_normalized_S3_pct",
+      "baseline_normalized_S4_pct",
+      "baseline_normalized_S5_pct",
+      "baseline_normalized_S6_pct",
+      "baseline_normalized_S7_pct",
+      "baseline_normalized_S8_pct",
+      "baseline_normalized_S9_pct",
+      "baseline_normalized_S10_pct",
+      "baseline_normalized_S11_pct",
+      "baseline_normalized_S12_pct",
+      "baseline_normalized_S13_pct",
+      "baseline_normalized_S14_pct",
+      "baseline_normalized_S15_pct",
+      "baseline_normalized_S16_pct",
+      "baseline_normalized_S17_pct",
+      "baseline_normalized_S18_pct",
+      "baseline_normalized_S19_pct",
+      "baseline_normalized_S20_pct",
+      "baseline_normalized_S21_pct",
+      "baseline_normalized_S22_pct",
+      "baseline_normalized_S23_pct",
+      "baseline_normalized_S24_pct",
+      "baseline_normalized_S25_pct",
+      "baseline_normalized_S26_pct",
+      "baseline_normalized_S27_pct",
+      "baseline_normalized_S28_pct",
+      "baseline_normalized_S29_pct",
+      "baseline_normalized_S30_pct",
+      "baseline_normalized_S31_pct",
+      "baseline_normalized_S32_pct"
+    ],
+    "causal_model_response_percent": [
+      "model_response_S1_pct",
+      "model_response_S2_pct",
+      "model_response_S3_pct",
+      "model_response_S4_pct",
+      "model_response_S5_pct",
+      "model_response_S6_pct",
+      "model_response_S7_pct",
+      "model_response_S8_pct",
+      "model_response_S9_pct",
+      "model_response_S10_pct",
+      "model_response_S11_pct",
+      "model_response_S12_pct",
+      "model_response_S13_pct",
+      "model_response_S14_pct",
+      "model_response_S15_pct",
+      "model_response_S16_pct",
+      "model_response_S17_pct",
+      "model_response_S18_pct",
+      "model_response_S19_pct",
+      "model_response_S20_pct",
+      "model_response_S21_pct",
+      "model_response_S22_pct",
+      "model_response_S23_pct",
+      "model_response_S24_pct",
+      "model_response_S25_pct",
+      "model_response_S26_pct",
+      "model_response_S27_pct",
+      "model_response_S28_pct",
+      "model_response_S29_pct",
+      "model_response_S30_pct",
+      "model_response_S31_pct",
+      "model_response_S32_pct"
+    ],
+    "quality_and_pose": [
+      "isolated_spike_flag",
+      "synchronized_pose_gap_ms",
+      "lag_corrected_pose_gap_s",
+      "paper_x_cm",
+      "paper_y_cm",
+      "snout_height_cm",
+      "height_pass_1_0_to_3_5_cm",
+      "approximate_source_label",
+      "sequence_model_eligible",
+      "exclusion_reason"
+    ]
+  },
+  "model_pilot": {
+    "primary_holdout_session": "20260803_170357",
+    "training_sessions": [
+      "20260730_152754",
+      "20260730_153631",
+      "20260730_154848",
+      "20260730_161358",
+      "20260730_163355",
+      "20260803_144217",
+      "20260803_150952",
+      "20260803_154420",
+      "20260803_160842",
+      "20260803_164023"
+    ],
+    "features": [
+      "32 current causal-median response channels",
+      "32 differences from 1.5 seconds earlier",
+      "32 differences from 6.0 seconds earlier",
+      "32 deviations from the causal 4.0-second EMA"
+    ],
+    "classifier": "StandardScaler + L2-regularized multinomial logistic regression",
+    "regularization_C": 0.01,
+    "class_weight": "balanced",
+    "random_seed": 20260803,
+    "important_limitation": "Targets are approximate source regions, not direct chemical labels."
+  }
+}

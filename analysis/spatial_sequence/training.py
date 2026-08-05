@@ -195,7 +195,7 @@ def _signature(config: RunConfig, prepared: PreparedData) -> dict[str, Any]:
         "normalization": prepared.stats.as_dict(),
         "session_ids": [session.info.session_id for session in prepared.sessions],
         "session_slugs": [
-            session.info.run_directory.name for session in prepared.sessions
+            session.info.slug for session in prepared.sessions
         ],
         "split": (
             "train-guard-validation-guard-train"
@@ -223,10 +223,10 @@ def _write_history(path: Path, history: list[dict[str, Any]]) -> None:
 def _split_summary(prepared: PreparedData, temporal_mode: str) -> dict[str, Any]:
     sessions: dict[str, Any] = {}
     for session in prepared.sessions:
-        session_key = session.info.run_directory.name
+        session_key = session.info.slug
         sessions[session_key] = {
             "session_id": session.info.session_id,
-            "session_slug": session.info.run_directory.name,
+            "session_slug": session.info.slug,
             "active_rows": int(len(session.sensors)),
             "pose_valid_rows": int(np.sum(session.pose_mask)),
             "blocks": [
@@ -488,12 +488,12 @@ def train_run(
         held_out_session=config.held_out_session,
     )
     if config.target == "position":
-        canonical_session = prepared.sessions[0].info.run_directory.name
+        canonical_session = prepared.sessions[0].info.slug
         if config.session != canonical_session:
             config = replace(config, session=canonical_session)
     if config.evaluation_scheme == "leave-one-session-out":
         validation_sessions = [
-            item.info.run_directory.name
+            item.info.slug
             for item in prepared.sessions
             if any(block.split == "validation" for block in item.blocks)
         ]
@@ -686,7 +686,7 @@ def evaluate_checkpoint(
         aliases = {
             info.session_id,
             info.trial_id,
-            info.run_directory.name,
+            info.slug,
             info.session_directory.name,
         }
         if supplied_session not in aliases:

@@ -67,7 +67,7 @@ class SanitySession:
 
     @property
     def slug(self) -> str:
-        return self.info.run_directory.name
+        return self.info.slug
 
 
 @dataclass(frozen=True)

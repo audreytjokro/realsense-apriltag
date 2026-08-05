@@ -862,7 +862,7 @@ def render_run_diagnostics(
 
     session_slug = _session_slug
     if session_slug is None and target == "position" and len(prepared.sessions) == 1:
-        session_slug = prepared.sessions[0].info.run_directory.name
+        session_slug = prepared.sessions[0].info.slug
     figure.suptitle(
         _configuration_title(
             target,

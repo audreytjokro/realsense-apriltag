@@ -1,5 +1,0 @@
-event_index,event,waypoint_index,x_cm,y_cm,next_x_cm,next_y_cm,host_timestamp_utc,recorder_elapsed_s
-1,guide_attached,1,15.85,20.12,14.4,12.68,2026-07-30T19:48:53.956+00:00,7.5
-2,waypoint_shown,1,15.85,20.12,14.4,12.68,2026-07-30T19:48:53.956+00:00,7.5
-3,duration_reached,1,15.85,20.12,14.4,12.68,2026-07-30T19:55:04.799+00:00,601.0
-4,guide_closed,1,15.85,20.12,14.4,12.68,2026-07-30T19:55:56.447+00:00,676.0

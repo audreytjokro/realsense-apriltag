@@ -1,7 +1,0 @@
-session,trial_id,layout,host_duration_s,readings,sync_match_percent,sync_p95_ms,analysis_status
-20260730_152653,2026-07-30_mint_only_horizontal_random_10min_run01,mint-only horizontal initial abort,5.007,11,100.0,68.8,excluded-aborted
-20260730_152754,2026-07-30_mint_only_horizontal_random_10min_run01,mint-only horizontal,392.174,706,100.0,85.3,usable
-20260730_153631,2026-07-30_caret_mint_left_lavender_right_random_10min_run01,caret mint-left lavender-right,409.591,737,100.0,95.2,usable
-20260730_154848,2026-07-30_caret_lavender_left_mint_right_random_10min_run01,caret lavender-left mint-right,421.832,759,100.0,92.9,usable
-20260730_161358,2026-07-30_lavender_only_horizontal_random_10min_run01,lavender-only horizontal,460.671,829,100.0,88.8,usable
-20260730_163355,2026-07-30_inverted_caret_lavender_left_mint_right_random_10min_run01,inverted caret lavender-left mint-right,619.299,1114,100.0,89.7,usable

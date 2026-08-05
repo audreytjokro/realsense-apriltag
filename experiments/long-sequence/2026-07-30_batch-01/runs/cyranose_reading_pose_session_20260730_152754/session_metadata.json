@@ -1,0 +1,12 @@
+{
+  "session_id": "cyranose_reading_pose_session_20260730_152754",
+  "created_at_utc": "2026-07-30T19:27:56.258+00:00",
+  "trial_id": "2026-07-30_mint_only_horizontal_random_10min_run01",
+  "trial_label": "mint_only_horizontal_random",
+  "notes": "10-minute random-waypoint moving sequence; 26.5 x 26.5 cm paper; one long horizontal mint strip centered on paper; layout fixed; hover without contact; natural speed variation; no systematic height change over source",
+  "port": "COM4",
+  "baud": 57600,
+  "rsd_interval_s": 0.2,
+  "max_sync_ms": 250.0,
+  "save_video": true
+}

@@ -334,7 +334,7 @@ def _render_cross_seed_figures(
 ) -> list[Path]:
     outputs = []
     session_layouts = {
-        info.run_directory.name: load_annotation(info).source_polygons_paper_cm
+        info.slug: load_annotation(info).source_polygons_paper_cm
         for info in discover_sessions()
     }
     for key, runs in sorted(groups.items()):
@@ -428,7 +428,7 @@ def regenerate_session_diagnostics(
         )
 
     session_layouts = {
-        info.run_directory.name: load_annotation(
+        info.slug: load_annotation(
             info, verify_hashes=False
         ).source_polygons_paper_cm
         for info in discover_sessions()

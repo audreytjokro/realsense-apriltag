@@ -238,7 +238,7 @@ def evaluate_and_save(
         prepared.stats,
     )
     session_ids = [session.info.session_id for session in prepared.sessions]
-    session_slugs = [session.info.run_directory.name for session in prepared.sessions]
+    session_slugs = [session.info.slug for session in prepared.sessions]
     if prepared.target == "position":
         prediction = {"joint_probabilities": occurrences["joint_probabilities"]}
     elif prepared.target == "area":

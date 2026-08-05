@@ -1,0 +1,16 @@
+record_type,session_a,session_b,value
+within_session_radius,mint-only-horizontal-run01,,3.745914649111211
+within_session_radius,caret-mint-left-lavender-right-run01,,4.8305114086262675
+within_session_radius,caret-lavender-left-mint-right-run01,,3.9879477903597844
+within_session_radius,lavender-only-horizontal-run01,,6.412771198872161
+within_session_radius,inverted-caret-lavender-left-mint-right-run01,,3.5487055822055233
+centroid_distance_pc1_pc3,mint-only-horizontal-run01,caret-mint-left-lavender-right-run01,4.990301776191636
+centroid_distance_pc1_pc3,mint-only-horizontal-run01,caret-lavender-left-mint-right-run01,6.946283413451294
+centroid_distance_pc1_pc3,mint-only-horizontal-run01,lavender-only-horizontal-run01,6.9185767604740205
+centroid_distance_pc1_pc3,mint-only-horizontal-run01,inverted-caret-lavender-left-mint-right-run01,6.316427151684163
+centroid_distance_pc1_pc3,caret-mint-left-lavender-right-run01,caret-lavender-left-mint-right-run01,2.0097762414173745
+centroid_distance_pc1_pc3,caret-mint-left-lavender-right-run01,lavender-only-horizontal-run01,4.420549331578489
+centroid_distance_pc1_pc3,caret-mint-left-lavender-right-run01,inverted-caret-lavender-left-mint-right-run01,2.5777547526934232
+centroid_distance_pc1_pc3,caret-lavender-left-mint-right-run01,lavender-only-horizontal-run01,4.4885468009339435
+centroid_distance_pc1_pc3,caret-lavender-left-mint-right-run01,inverted-caret-lavender-left-mint-right-run01,2.1890571829205903
+centroid_distance_pc1_pc3,lavender-only-horizontal-run01,inverted-caret-lavender-left-mint-right-run01,4.040798061566318

@@ -1,6 +1,0 @@
-session,occupied_cells,on_paper_readings,median_readings_per_cell,supported_grid_nodes,grid_nodes,support_fraction,supported_neighbor_median,supported_ess_median
-mint-only-horizontal-run01,497,632,1.0,2663,2916,0.9132373113854595,15.0,11.4998010079231
-caret-mint-left-lavender-right-run01,571,696,1.0,2701,2916,0.9262688614540466,17.0,13.413330196068209
-caret-lavender-left-mint-right-run01,504,637,1.0,2614,2916,0.8964334705075446,15.0,11.833181181684733
-lavender-only-horizontal-run01,608,721,1.0,2752,2916,0.943758573388203,17.0,13.460906166666458
-inverted-caret-lavender-left-mint-right-run01,834,1044,1.0,2838,2916,0.9732510288065843,24.0,18.731119230955002

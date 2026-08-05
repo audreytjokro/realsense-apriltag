@@ -1,6 +1,0 @@
-session,train_spatial_cells,validation_spatial_cells,validation_cells_supported_by_train,validation_support_fraction,validation_neighbor_median,validation_ess_median
-mint-only-horizontal-run01,383,95,95,1.0,12.0,9.649232322970583
-caret-mint-left-lavender-right-run01,439,125,125,1.0,15.0,11.971116259561143
-caret-lavender-left-mint-right-run01,368,121,120,0.9917355371900827,13.0,10.003042495619152
-lavender-only-horizontal-run01,457,139,139,1.0,16.0,12.288816299025106
-inverted-caret-lavender-left-mint-right-run01,673,190,190,1.0,24.0,18.19382308493087
