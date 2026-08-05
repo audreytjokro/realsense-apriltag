@@ -101,6 +101,16 @@ short interpretation. They are saved with executed outputs.
    evidence. The caret/V shapes are therefore not cleanly reconstructed,
    especially for lavender; the result is a useful partial/negative moving
    transfer audit rather than evidence of corrupted data.
+10. `notebooks/10_long_random_sequence_sensor_sanity_checks.ipynb`: independent
+   sensor-level audit of the five annotated long random-trajectory sessions. It
+   uses cell-balanced 0.5 cm observations and a support-gated 2.5 cm Gaussian
+   kernel for raw and robust 32-channel maps; compares one equal-session global
+   PCA with five session-fitted PCAs; preserves raw concatenated time traces;
+   quantifies sampling, repeated-visit consistency, and physical-row
+   train/validation shift; and compares equal-session-weighted ten-row strip
+   entry/exit trajectories. Its PNG and CSV artifacts are stored in
+   `reports/10_long_random_sequence_sensor_sanity_checks/`. The notebook is
+   descriptive only and does not modify annotations, splits, or model outputs.
 
 Supporting folders:
 

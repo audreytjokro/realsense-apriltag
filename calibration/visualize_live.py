@@ -1,11 +1,17 @@
 from __future__ import annotations
 
 import argparse
+import sys
 from datetime import datetime
 from pathlib import Path
 
 import cv2
 import numpy as np
+
+REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPOSITORY_ROOT))
+
+from h264_video import H264VideoWriter
 
 import display
 import geometry
@@ -14,7 +20,6 @@ from camera import RectifiedColorCamera
 
 
 WINDOW_NAME = "Cube Pose Live"
-VIDEO_CODEC = "mp4v"
 LIVE_DEMO_DIR = storage.DATA_DIR / "live_demos"
 
 
@@ -83,7 +88,7 @@ def run_live(
     show_live_guide(show_snout, video_path)
     camera_matrix = np.asarray(intrinsics["rectified_K"], dtype=np.float64)
     T_cube_tag = geometry.transform_map_from_json(cube_calibration)
-    video_writer: cv2.VideoWriter | None = None
+    video_writer: H264VideoWriter | None = None
 
     cv2.namedWindow(WINDOW_NAME, cv2.WINDOW_NORMAL)
     try:
@@ -146,15 +151,11 @@ def run_live(
                 display.draw_text_lines(output, lines)
                 if video_path is not None and video_writer is None:
                     height, width = output.shape[:2]
-                    fourcc = cv2.VideoWriter_fourcc(*VIDEO_CODEC)
-                    video_writer = cv2.VideoWriter(
-                        str(video_path),
-                        fourcc,
+                    video_writer = H264VideoWriter(
+                        video_path,
                         float(intrinsics["fps"]),
                         (width, height),
                     )
-                    if not video_writer.isOpened():
-                        raise RuntimeError(f"Cannot open video writer: {video_path}")
                 if video_writer is not None:
                     video_writer.write(output)
                 cv2.imshow(WINDOW_NAME, output)

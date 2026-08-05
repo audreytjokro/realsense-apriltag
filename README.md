@@ -297,6 +297,10 @@ Close PCnose+ first so that it releases the serial port, then run:
 python record_cyranose_reading_pose.py --port COM4 --baud 57600 --interval 0.2 --max-sync-ms 250 --save-video --trial-id TRIAL_ID --trial-label TRIAL_LABEL --notes "NOTES"
 ```
 
+Saved MP4 files use H.264 (`libx264`, CRF 18, `yuv420p`) through the `ffmpeg`
+executable on `PATH`. Recording fails explicitly if FFmpeg is unavailable; it
+does not fall back to the older MPEG-4 Part 2 codec.
+
 The recorder always creates a new timestamped session at the repository root.
 After a session is reviewed, place it in the appropriate `experiments/` stage
 and add it to the manifest. This keeps collection simple while allowing the

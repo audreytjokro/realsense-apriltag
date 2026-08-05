@@ -1,0 +1,58 @@
+{
+  "accepted_encounters": [
+    {
+      "accepted": 4,
+      "session": "caret-lavender-left-mint-right-run01",
+      "source": "lavender"
+    },
+    {
+      "accepted": 2,
+      "session": "caret-mint-left-lavender-right-run01",
+      "source": "lavender"
+    },
+    {
+      "accepted": 3,
+      "session": "inverted-caret-lavender-left-mint-right-run01",
+      "source": "lavender"
+    },
+    {
+      "accepted": 11,
+      "session": "lavender-only-horizontal-run01",
+      "source": "lavender"
+    },
+    {
+      "accepted": 2,
+      "session": "caret-lavender-left-mint-right-run01",
+      "source": "mint"
+    },
+    {
+      "accepted": 3,
+      "session": "caret-mint-left-lavender-right-run01",
+      "source": "mint"
+    },
+    {
+      "accepted": 8,
+      "session": "inverted-caret-lavender-left-mint-right-run01",
+      "source": "mint"
+    },
+    {
+      "accepted": 13,
+      "session": "mint-only-horizontal-run01",
+      "source": "mint"
+    }
+  ],
+  "all_timestamps_strictly_increasing": true,
+  "automatic_data_exclusions": 0,
+  "channel_count": 32,
+  "figure_count": 39,
+  "global_pc1_pc3_explained_variance": 0.9591777780733193,
+  "interpretation": "Descriptive sanity checks only; no session, annotation, split, or model was changed.",
+  "kernel_support_fraction_max": 0.9732510288065843,
+  "kernel_support_fraction_min": 0.8964334705075446,
+  "maximum_absolute_train_validation_median_shift": 23.43121423095929,
+  "maximum_normalized_train_validation_wasserstein": 17.182650248458852,
+  "median_repeat_visit_dispersion": 0.5001532206281394,
+  "minimum_train_support_for_validation": 0.9917355371900827,
+  "session_count": 5,
+  "total_pose_missing_rows": 177
+}

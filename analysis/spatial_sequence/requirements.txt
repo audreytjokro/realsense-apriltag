@@ -1,0 +1,10 @@
+numpy
+pandas
+opencv-python
+matplotlib
+torch
+ipywidgets
+ipympl
+jupyter
+nbconvert
+

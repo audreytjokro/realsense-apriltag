@@ -1,12 +1,18 @@
 from __future__ import annotations
 
 import argparse
+import sys
 from itertools import combinations
 from pathlib import Path
 from typing import Any
 
 import cv2
 import numpy as np
+
+REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPOSITORY_ROOT))
+
+from h264_video import H264VideoWriter
 
 import display
 import geometry
@@ -17,7 +23,6 @@ from visualize_live import run_live
 
 RECORD_WINDOW = "Cube Calibration Recording"
 SNOUT_WINDOW = "Snout Calibration"
-VIDEO_CODEC = "mp4v"
 PROGRESS_WIDTH = 20
 PROGRESS_UPDATE_FRAMES = 10
 
@@ -304,7 +309,7 @@ def record_video(
         raise FileExistsError(output_path)
     show_recording_guide(output_path, additional)
     saved_intrinsics = storage.load_camera_intrinsics()
-    writer: cv2.VideoWriter | None = None
+    writer: H264VideoWriter | None = None
     recording = False
     tag_counts, pair_counts = _counts_from_report(starting_report)
 
@@ -373,15 +378,11 @@ def record_video(
                 key = cv2.waitKey(1) & 0xFF
                 if key == ord(" "):
                     if not recording:
-                        fourcc = cv2.VideoWriter_fourcc(*VIDEO_CODEC)
-                        writer = cv2.VideoWriter(
-                            str(output_path),
-                            fourcc,
+                        writer = H264VideoWriter(
+                            output_path,
                             COLOR_FPS,
                             (COLOR_WIDTH, COLOR_HEIGHT),
                         )
-                        if not writer.isOpened():
-                            raise RuntimeError("Cannot open MP4V video writer")
                         recording = True
                         print("Recording started.")
                     else:

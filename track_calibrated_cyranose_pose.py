@@ -11,6 +11,8 @@ from typing import Any
 import cv2
 import numpy as np
 
+from h264_video import H264VideoWriter
+
 
 ROOT_DIR = Path(__file__).resolve().parent
 CALIBRATION_DIR = ROOT_DIR / "calibration"
@@ -26,7 +28,6 @@ WINDOW_NAME = "Cyranose Pose Tracking"
 SESSION_PREFIX = "cyranose_pose_session"
 CSV_NAME = "cyranose_pose_tracking.csv"
 VIDEO_NAME = "rectified_rgb.mp4"
-VIDEO_CODEC = "mp4v"
 TRACKED_TAG_IDS = tuple(range(7))
 MM_PER_CM = 10.0
 
@@ -235,7 +236,7 @@ def run_tracking(save_video: bool = False) -> None:
     output_dir, csv_path = session_paths(datetime.now())
     video_path = output_dir / VIDEO_NAME if save_video else None
 
-    video_writer: cv2.VideoWriter | None = None
+    video_writer: H264VideoWriter | None = None
     cv2.namedWindow(WINDOW_NAME, cv2.WINDOW_NORMAL)
     try:
         with RectifiedColorCamera(intrinsics) as camera:
@@ -253,15 +254,11 @@ def run_tracking(save_video: bool = False) -> None:
                     camera_frame = camera.read_frame()
                     if save_video and video_writer is None:
                         height, width = camera_frame.image.shape[:2]
-                        fourcc = cv2.VideoWriter_fourcc(*VIDEO_CODEC)
-                        video_writer = cv2.VideoWriter(
-                            str(video_path),
-                            fourcc,
+                        video_writer = H264VideoWriter(
+                            video_path,
                             float(intrinsics["fps"]),
                             (width, height),
                         )
-                        if not video_writer.isOpened():
-                            raise RuntimeError(f"Cannot open video writer: {video_path}")
 
                     host_timestamp = datetime.now(timezone.utc).isoformat(
                         timespec="milliseconds"

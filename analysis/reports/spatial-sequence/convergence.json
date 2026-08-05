@@ -1,0 +1,362 @@
+{
+  "area | pooled | temporal-cnn | bidirectional": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "plateau",
+      "1": "plateau",
+      "2": "plateau",
+      "3": "fast-overfit",
+      "4": "plateau"
+    }
+  },
+  "area | pooled | temporal-cnn | causal": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "still-improving",
+      "1": "plateau",
+      "2": "plateau",
+      "3": "plateau",
+      "4": "plateau"
+    }
+  },
+  "area | pooled | transformer | bidirectional": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "plateau",
+      "1": "plateau",
+      "2": "plateau",
+      "3": "plateau",
+      "4": "still-improving"
+    }
+  },
+  "area | pooled | transformer | causal": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "plateau",
+      "1": "plateau",
+      "2": "plateau",
+      "3": "plateau",
+      "4": "plateau"
+    }
+  },
+  "distance | pooled | temporal-cnn | bidirectional": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "plateau",
+      "1": "plateau",
+      "2": "plateau",
+      "3": "plateau",
+      "4": "plateau"
+    }
+  },
+  "distance | pooled | temporal-cnn | causal": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "plateau",
+      "1": "plateau",
+      "2": "fast-overfit",
+      "3": "plateau",
+      "4": "fast-overfit"
+    }
+  },
+  "distance | pooled | transformer | bidirectional": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "plateau",
+      "1": "plateau",
+      "2": "plateau",
+      "3": "plateau",
+      "4": "plateau"
+    }
+  },
+  "distance | pooled | transformer | causal": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "plateau",
+      "1": "plateau",
+      "2": "plateau",
+      "3": "plateau",
+      "4": "plateau"
+    }
+  },
+  "height | pooled | temporal-cnn | bidirectional": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "plateau",
+      "1": "fast-overfit",
+      "2": "plateau",
+      "3": "plateau",
+      "4": "plateau"
+    }
+  },
+  "height | pooled | temporal-cnn | causal": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "fast-overfit",
+      "1": "fast-overfit",
+      "2": "plateau",
+      "3": "plateau",
+      "4": "plateau"
+    }
+  },
+  "height | pooled | transformer | bidirectional": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "plateau",
+      "1": "plateau",
+      "2": "fast-overfit",
+      "3": "fast-overfit",
+      "4": "plateau"
+    }
+  },
+  "height | pooled | transformer | causal": {
+    "consensus": "fast-overfit",
+    "seed_labels": {
+      "0": "fast-overfit",
+      "1": "fast-overfit",
+      "2": "fast-overfit",
+      "3": "fast-overfit",
+      "4": "fast-overfit"
+    }
+  },
+  "position | caret-lavender-left-mint-right-run01 | temporal-cnn | bidirectional": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "plateau",
+      "1": "still-improving",
+      "2": "plateau",
+      "3": "plateau",
+      "4": "plateau"
+    }
+  },
+  "position | caret-lavender-left-mint-right-run01 | temporal-cnn | causal": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "plateau",
+      "1": "fast-overfit",
+      "2": "plateau",
+      "3": "plateau",
+      "4": "fast-overfit"
+    }
+  },
+  "position | caret-lavender-left-mint-right-run01 | transformer | bidirectional": {
+    "consensus": "fast-overfit",
+    "seed_labels": {
+      "0": "fast-overfit",
+      "1": "fast-overfit",
+      "2": "fast-overfit",
+      "3": "fast-overfit",
+      "4": "fast-overfit"
+    }
+  },
+  "position | caret-lavender-left-mint-right-run01 | transformer | causal": {
+    "consensus": "fast-overfit",
+    "seed_labels": {
+      "0": "fast-overfit",
+      "1": "plateau",
+      "2": "fast-overfit",
+      "3": "fast-overfit",
+      "4": "fast-overfit"
+    }
+  },
+  "position | caret-mint-left-lavender-right-run01 | temporal-cnn | bidirectional": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "plateau",
+      "1": "still-improving",
+      "2": "plateau",
+      "3": "plateau",
+      "4": "still-improving"
+    }
+  },
+  "position | caret-mint-left-lavender-right-run01 | temporal-cnn | causal": {
+    "consensus": "fast-overfit",
+    "seed_labels": {
+      "0": "fast-overfit",
+      "1": "fast-overfit",
+      "2": "plateau",
+      "3": "fast-overfit",
+      "4": "plateau"
+    }
+  },
+  "position | caret-mint-left-lavender-right-run01 | transformer | bidirectional": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "plateau",
+      "1": "fast-overfit",
+      "2": "plateau",
+      "3": "plateau",
+      "4": "still-improving"
+    }
+  },
+  "position | caret-mint-left-lavender-right-run01 | transformer | causal": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "plateau",
+      "1": "fast-overfit",
+      "2": "plateau",
+      "3": "plateau",
+      "4": "still-improving"
+    }
+  },
+  "position | inverted-caret-lavender-left-mint-right-run01 | temporal-cnn | bidirectional": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "plateau",
+      "1": "plateau",
+      "2": "plateau",
+      "3": "still-improving",
+      "4": "plateau"
+    }
+  },
+  "position | inverted-caret-lavender-left-mint-right-run01 | temporal-cnn | causal": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "plateau",
+      "1": "fast-overfit",
+      "2": "plateau",
+      "3": "plateau",
+      "4": "plateau"
+    }
+  },
+  "position | inverted-caret-lavender-left-mint-right-run01 | transformer | bidirectional": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "plateau",
+      "1": "plateau",
+      "2": "plateau",
+      "3": "plateau",
+      "4": "plateau"
+    }
+  },
+  "position | inverted-caret-lavender-left-mint-right-run01 | transformer | causal": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "plateau",
+      "1": "plateau",
+      "2": "fast-overfit",
+      "3": "plateau",
+      "4": "plateau"
+    }
+  },
+  "position | lavender-only-horizontal-run01 | temporal-cnn | bidirectional": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "plateau",
+      "1": "plateau",
+      "2": "plateau",
+      "3": "plateau",
+      "4": "plateau"
+    }
+  },
+  "position | lavender-only-horizontal-run01 | temporal-cnn | causal": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "plateau",
+      "1": "fast-overfit",
+      "2": "plateau",
+      "3": "fast-overfit",
+      "4": "plateau"
+    }
+  },
+  "position | lavender-only-horizontal-run01 | transformer | bidirectional": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "plateau",
+      "1": "plateau",
+      "2": "plateau",
+      "3": "plateau",
+      "4": "plateau"
+    }
+  },
+  "position | lavender-only-horizontal-run01 | transformer | causal": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "still-improving",
+      "1": "plateau",
+      "2": "still-improving",
+      "3": "plateau",
+      "4": "plateau"
+    }
+  },
+  "position | mint-only-horizontal-run01 | temporal-cnn | bidirectional": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "plateau",
+      "1": "plateau",
+      "2": "plateau",
+      "3": "plateau",
+      "4": "plateau"
+    }
+  },
+  "position | mint-only-horizontal-run01 | temporal-cnn | causal": {
+    "consensus": "fast-overfit",
+    "seed_labels": {
+      "0": "plateau",
+      "1": "fast-overfit",
+      "2": "fast-overfit",
+      "3": "fast-overfit",
+      "4": "plateau"
+    }
+  },
+  "position | mint-only-horizontal-run01 | transformer | bidirectional": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "plateau",
+      "1": "plateau",
+      "2": "plateau",
+      "3": "plateau",
+      "4": "plateau"
+    }
+  },
+  "position | mint-only-horizontal-run01 | transformer | causal": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "plateau",
+      "1": "plateau",
+      "2": "plateau",
+      "3": "fast-overfit",
+      "4": "plateau"
+    }
+  },
+  "velocity | pooled | temporal-cnn | bidirectional": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "plateau",
+      "1": "plateau",
+      "2": "plateau",
+      "3": "plateau",
+      "4": "fast-overfit"
+    }
+  },
+  "velocity | pooled | temporal-cnn | causal": {
+    "consensus": "fast-overfit",
+    "seed_labels": {
+      "0": "fast-overfit",
+      "1": "fast-overfit",
+      "2": "fast-overfit",
+      "3": "fast-overfit",
+      "4": "fast-overfit"
+    }
+  },
+  "velocity | pooled | transformer | bidirectional": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "plateau",
+      "1": "plateau",
+      "2": "plateau",
+      "3": "plateau",
+      "4": "plateau"
+    }
+  },
+  "velocity | pooled | transformer | causal": {
+    "consensus": "mixed/plateau",
+    "seed_labels": {
+      "0": "plateau",
+      "1": "plateau",
+      "2": "plateau",
+      "3": "plateau",
+      "4": "plateau"
+    }
+  }
+}

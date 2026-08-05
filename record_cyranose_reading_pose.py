@@ -16,6 +16,7 @@ from typing import Any
 import cv2
 import numpy as np
 
+from h264_video import H264VideoWriter
 import pcnose_serial
 import track_calibrated_cyranose_pose as pose_tracking
 
@@ -25,7 +26,6 @@ WINDOW_NAME = "Cyranose Reading + Pose"
 SESSION_PREFIX = "cyranose_reading_pose_session"
 CSV_NAME = "cyranose_reading_pose.csv"
 VIDEO_NAME = pose_tracking.VIDEO_NAME
-VIDEO_CODEC = pose_tracking.VIDEO_CODEC
 DEFAULT_PORT = "COM4"
 DEFAULT_BAUD = 57600
 DEFAULT_INTERVAL_S = 0.2
@@ -370,13 +370,9 @@ def create_video_writer(
     path: Path,
     image: np.ndarray,
     fps: float,
-) -> cv2.VideoWriter:
+) -> H264VideoWriter:
     height, width = image.shape[:2]
-    fourcc = cv2.VideoWriter_fourcc(*VIDEO_CODEC)
-    writer = cv2.VideoWriter(str(path), fourcc, fps, (width, height))
-    if not writer.isOpened():
-        raise RuntimeError(f"Cannot open video writer: {path}")
-    return writer
+    return H264VideoWriter(path, fps, (width, height))
 
 
 def draw_live_view(
@@ -548,7 +544,7 @@ def run_recording(
         reader.join()
         raise RuntimeError("Cyranose initialization ended without an RVN response")
 
-    video_writer: cv2.VideoWriter | None = None
+    video_writer: H264VideoWriter | None = None
     window_created = False
     reader_stopped = False
     pending: deque[CyranoseReading] = deque()
