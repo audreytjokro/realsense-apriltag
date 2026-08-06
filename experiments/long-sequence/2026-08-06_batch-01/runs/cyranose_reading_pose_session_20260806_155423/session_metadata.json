@@ -1,0 +1,12 @@
+{
+  "session_id": "cyranose_reading_pose_session_20260806_155423",
+  "created_at_utc": "2026-08-06T19:54:24.253+00:00",
+  "trial_id": "2026-08-06_right_caret_mint_upper_lavender_lower_random_10min_run01",
+  "trial_label": "right_caret_mint_upper_lavender_lower_random",
+  "notes": "10-minute random-motion rotated-caret sequence; right-pointing caret; mint upper arm; lavender lower arm; sources do not touch; closest gap approximately 3-5 cm; same strip dimensions and paper-local geometry protocol across all eight runs; fixed desk tag and camera; hover without contact; natural speed variation; background and both source arms sampled; manually stop after 10 minutes",
+  "port": "COM4",
+  "baud": 57600,
+  "rsd_interval_s": 0.2,
+  "max_sync_ms": 250.0,
+  "save_video": true
+}
