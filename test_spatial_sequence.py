@@ -18,11 +18,14 @@ from matplotlib.figure import Figure
 from h264_video import H264VideoWriter
 
 from analysis.spatial_sequence.annotation import (
+    SpatialAnnotationTool,
     build_calibrated_desk_reference,
     nearest_qualified_desk_row,
+    source_overlap_geometry,
     undo_last_click,
 )
 from analysis.spatial_sequence.core import (
+    AUGUST_SESSION_IDS,
     GUARD_LENGTH,
     PAPER_HALF_CM,
     SENSOR_COLUMNS,
@@ -42,6 +45,7 @@ from analysis.spatial_sequence.core import (
     balanced_lengths,
     canonical_paper_corners,
     compute_normalization_stats,
+    discover_august_sessions,
     distances_to_polygon,
     estimate_velocity,
     fit_similarity_transform,
@@ -285,6 +289,84 @@ def _manual_session(row_count: int = 28) -> SessionData:
 
 
 class GeometryAndAnnotationTests(unittest.TestCase):
+    def test_annotation_overlay_toggle_updates_button_and_blocks_hidden_clicks(self) -> None:
+        tool = SpatialAnnotationTool.__new__(SpatialAnnotationTool)
+        tool.overlay_visible = True
+        tool.toggle_overlay_button = mock.Mock()
+        tool._redraw = mock.Mock()
+        tool._update_status = mock.Mock()
+        tool.desk_axis = object()
+
+        tool._on_toggle_overlay(None)
+        self.assertFalse(tool.overlay_visible)
+        self.assertEqual(
+            tool.toggle_overlay_button.description,
+            "Show annotation overlay",
+        )
+        self.assertEqual(tool.toggle_overlay_button.icon, "eye")
+        tool._on_click(mock.Mock(inaxes=tool.desk_axis))
+        self.assertIn("hidden", tool._update_status.call_args.args[0])
+
+        tool._on_toggle_overlay(None)
+        self.assertTrue(tool.overlay_visible)
+        self.assertEqual(
+            tool.toggle_overlay_button.description,
+            "Hide annotation overlay",
+        )
+        self.assertEqual(tool.toggle_overlay_button.icon, "eye-slash")
+
+    def test_august_session_discovery_from_metadata(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            run_root = root / "runs"
+            for index, session_id in enumerate(AUGUST_SESSION_IDS):
+                directory = (
+                    run_root
+                    / f"cyranose_reading_pose_session_{session_id}"
+                )
+                directory.mkdir(parents=True)
+                metadata = {
+                    "session_id": directory.name,
+                    "trial_id": (
+                        "2026-08-03_x_mint_backslash_lavender_slash_"
+                        f"random_10min_run{index + 1:02d}"
+                    ),
+                    "trial_label": "x_mint_backslash_lavender_slash_random",
+                }
+                (directory / "session_metadata.json").write_text(
+                    json.dumps(metadata),
+                    encoding="utf-8",
+                )
+                (directory / "cyranose_reading_pose.csv").touch()
+                (directory / "rectified_rgb.mp4").touch()
+
+            sessions = discover_august_sessions(root)
+            self.assertEqual(
+                tuple(session.session_id for session in sessions),
+                AUGUST_SESSION_IDS,
+            )
+            self.assertEqual(len(sessions), 6)
+            self.assertEqual(sessions[0].source_names, ("mint", "lavender"))
+            self.assertEqual(
+                sessions[0].slug,
+                "x-mint-backslash-lavender-slash-run01",
+            )
+
+    def test_source_overlap_geometry_has_no_cross_ghost_region(self) -> None:
+        points = {
+            "mint": [(-3.0, -1.0), (3.0, -1.0), (3.0, 1.0), (-3.0, 1.0)],
+            "lavender": [(-1.0, -3.0), (1.0, -3.0), (1.0, 3.0), (-1.0, 3.0)],
+        }
+        area, intersection = source_overlap_geometry(points)
+        self.assertAlmostEqual(area, 4.0)
+        self.assertEqual(intersection.shape, (4, 2))
+        self.assertAlmostEqual(float(cv2.contourArea(intersection.astype(np.float32))), 4.0)
+
+        incomplete = {"mint": points["mint"], "lavender": points["lavender"][:3]}
+        empty_area, empty = source_overlap_geometry(incomplete)
+        self.assertEqual(empty_area, 0.0)
+        self.assertEqual(empty.shape, (0, 2))
+
     def test_similarity_transform_and_reprojection_round_trip(self) -> None:
         canonical = canonical_paper_corners()
         angle = np.deg2rad(23.0)

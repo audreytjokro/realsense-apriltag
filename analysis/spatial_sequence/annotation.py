@@ -162,6 +162,27 @@ def undo_last_click(
     return feature
 
 
+def source_overlap_geometry(
+    points: dict[str, list[tuple[float, float]]],
+) -> tuple[float, np.ndarray]:
+    """Return the desk-plane intersection of complete mint/lavender polygons."""
+    if any(len(points.get(name, [])) != 4 for name in ("mint", "lavender")):
+        return 0.0, np.empty((0, 2), dtype=np.float64)
+    hulls: list[np.ndarray] = []
+    for name in ("mint", "lavender"):
+        polygon = np.asarray(points[name], dtype=np.float32).reshape(-1, 2)
+        if not np.all(np.isfinite(polygon)):
+            return 0.0, np.empty((0, 2), dtype=np.float64)
+        hull = cv2.convexHull(polygon).reshape(-1, 2)
+        if len(hull) < 3:
+            return 0.0, np.empty((0, 2), dtype=np.float64)
+        hulls.append(hull)
+    area, intersection = cv2.intersectConvexConvex(hulls[0], hulls[1])
+    if intersection is None or float(area) <= 0.0:
+        return 0.0, np.empty((0, 2), dtype=np.float64)
+    return float(area), np.asarray(intersection, dtype=np.float64).reshape(-1, 2)
+
+
 def annotation_status_table(
     sessions: list[SessionInfo] | None = None,
 ) -> pd.DataFrame:
@@ -212,6 +233,7 @@ class SpatialAnnotationTool:
         self.capture: cv2.VideoCapture | None = None
         self.points: dict[str, list[tuple[float, float]]] = {}
         self.click_history: list[str] = []
+        self.overlay_visible = True
         self.info = self.sessions[0]
         self._loading = False
         self._widgets = widgets
@@ -225,6 +247,21 @@ class SpatialAnnotationTool:
             layout=widgets.Layout(width="800px"),
         )
         self.feature_dropdown = widgets.Dropdown(description="Click target")
+        self.top_source_dropdown = widgets.Dropdown(
+            options=[
+                ("Unknown / not applicable", "unknown"),
+                ("Mint", "mint"),
+                ("Lavender", "lavender"),
+            ],
+            value="unknown",
+            description="Overlap top",
+            layout=widgets.Layout(width="420px"),
+        )
+        self.toggle_overlay_button = widgets.Button(
+            description="Hide annotation overlay",
+            icon="eye-slash",
+            layout=widgets.Layout(width="210px"),
+        )
         self.range_slider = widgets.IntRangeSlider(
             description="Usable rows",
             continuous_update=False,
@@ -254,9 +291,11 @@ class SpatialAnnotationTool:
         self.figure.canvas.mpl_connect("button_press_event", self._on_click)
         self.session_dropdown.observe(self._on_session_change, names="value")
         self.feature_dropdown.observe(self._on_feature_change, names="value")
+        self.top_source_dropdown.observe(self._on_top_source_change, names="value")
         self.raw_row_slider.observe(self._on_raw_row_change, names="value")
         self.undo_button.on_click(self._on_undo)
         self.reset_button.on_click(self._on_reset)
+        self.toggle_overlay_button.on_click(self._on_toggle_overlay)
         self.save_button.on_click(self._on_save)
         self.widget = widgets.VBox(
             [
@@ -269,8 +308,14 @@ class SpatialAnnotationTool:
                 self.range_slider,
                 self.raw_row_slider,
                 self.feature_dropdown,
+                self.top_source_dropdown,
                 widgets.HBox(
-                    [self.undo_button, self.reset_button, self.save_button]
+                    [
+                        self.toggle_overlay_button,
+                        self.undo_button,
+                        self.reset_button,
+                        self.save_button,
+                    ]
                 ),
                 self.status,
                 self.figure.canvas,
@@ -315,6 +360,11 @@ class SpatialAnnotationTool:
             self.raw_row_slider.value = default_row
             self.feature_dropdown.options = self._feature_names()
             self.feature_dropdown.value = "paper"
+            self.top_source_dropdown.value = "unknown"
+            self.top_source_dropdown.disabled = not {
+                "mint",
+                "lavender",
+            }.issubset(self.info.source_names)
             self.points = {name: [] for name in self._feature_names()}
             self.click_history = []
             self.desk_bounds = _desk_view_bounds(self.frame)
@@ -336,6 +386,10 @@ class SpatialAnnotationTool:
         if change["name"] == "value" and not self._loading:
             self._update_status()
 
+    def _on_top_source_change(self, change: dict[str, Any]) -> None:
+        if change["name"] == "value" and not self._loading:
+            self._update_status()
+
     def _on_raw_row_change(self, change: dict[str, Any]) -> None:
         if change["name"] == "value" and not self._loading:
             self.reference_view = None
@@ -343,8 +397,26 @@ class SpatialAnnotationTool:
             self._redraw()
             self._update_status()
 
+    def _on_toggle_overlay(self, _: Any) -> None:
+        self.overlay_visible = not self.overlay_visible
+        if self.overlay_visible:
+            self.toggle_overlay_button.description = "Hide annotation overlay"
+            self.toggle_overlay_button.icon = "eye-slash"
+            note = "Annotation overlay shown."
+        else:
+            self.toggle_overlay_button.description = "Show annotation overlay"
+            self.toggle_overlay_button.icon = "eye"
+            note = "Annotation overlay hidden; image clicks are disabled."
+        self._redraw()
+        self._update_status(note)
+
     def _on_click(self, event: Any) -> None:
         if event.inaxes is not self.desk_axis:
+            return
+        if not self.overlay_visible:
+            self._update_status(
+                "Annotation overlay is hidden; show it before adding points."
+            )
             return
         if event.xdata is None or event.ydata is None:
             return
@@ -409,6 +481,12 @@ class SpatialAnnotationTool:
             ),
             "qc_raw_row_at_save": reference.source_raw_row,
         }
+        overlap_area, _ = source_overlap_geometry(self.points)
+        diagnostics["source_overlap"] = {
+            "top_source": str(self.top_source_dropdown.value),
+            "area_policy": "mask_overlap_for_area_evaluation",
+            "preview_overlap_area_desk_cm2": overlap_area,
+        }
         try:
             write_annotation(
                 self.info,
@@ -449,9 +527,18 @@ class SpatialAnnotationTool:
             if actual != requested:
                 reference_text += f" (nearest qualified to {requested})"
         note_text = "" if note is None else f" <b>{note}</b>"
+        overlap_area, _ = source_overlap_geometry(self.points)
+        overlap_text = ""
+        if overlap_area > 0.0:
+            overlap_text = (
+                f" | overlap {overlap_area:.2f} cm²; "
+                f"top={self.top_source_dropdown.value}"
+            )
+        overlay_text = "" if self.overlay_visible else " | overlay hidden"
         self.status.value = (
             f"<b>Current: {feature}</b> | {counts} | JSON {saved}"
-            f"{reference_text}. Saving overwrites this session annotation."
+            f"{reference_text}{overlap_text}{overlay_text}. "
+            "Saving overwrites this session annotation."
             f"{note_text}"
         )
 
@@ -488,7 +575,7 @@ class SpatialAnnotationTool:
             "lavender": "violet",
         }
         for name, points in self.points.items():
-            if not points:
+            if not self.overlay_visible or not points:
                 continue
             array = np.asarray(points)
             self.desk_axis.plot(
@@ -513,13 +600,24 @@ class SpatialAnnotationTool:
                     color=colors[name],
                     linewidth=2,
                 )
+        overlap_area, overlap = source_overlap_geometry(self.points)
+        if self.overlay_visible and len(overlap):
+            self.desk_axis.fill(
+                overlap[:, 0],
+                overlap[:, 1],
+                facecolor="gold",
+                edgecolor="yellow",
+                alpha=0.45,
+                hatch="//",
+                label=f"source overlap ({overlap_area:.2f} cm²)",
+            )
         self.desk_axis.set_title(
             "Calibrated single-frame desk view "
             f"(CSV row {reference.source_raw_row}; click here)"
         )
         self.desk_axis.set_xlabel("Desk x (cm; display right)")
         self.desk_axis.set_ylabel("Desk y (cm; display down)")
-        if any(self.points.values()):
+        if self.overlay_visible and any(self.points.values()):
             self.desk_axis.legend(loc="upper right")
         self._redraw_raw(reference)
         self.figure.canvas.draw_idle()
@@ -537,7 +635,7 @@ class SpatialAnnotationTool:
         }
         desk_to_camera = reconstruct_camera_to_desk(row)
         for name, points in self.points.items():
-            if len(points) < 2:
+            if not self.overlay_visible or len(points) < 2:
                 continue
             pixels = project_desk_points(
                 np.asarray(points),
@@ -555,6 +653,21 @@ class SpatialAnnotationTool:
                 "o-",
                 color=colors[name],
                 linewidth=2,
+            )
+        _, overlap = source_overlap_geometry(self.points)
+        if self.overlay_visible and len(overlap):
+            pixels = project_desk_points(
+                overlap,
+                self.camera_matrix,
+                desk_to_camera,
+            )
+            self.raw_axis.fill(
+                pixels[:, 0],
+                pixels[:, 1],
+                facecolor="gold",
+                edgecolor="yellow",
+                alpha=0.45,
+                hatch="//",
             )
         self.raw_axis.set_title(
             "Matching raw frame and reprojection QC "

@@ -22,6 +22,20 @@ EXPERIMENT_ROOT = (
     / "long-sequence"
     / "2026-07-30_batch-01"
 )
+AUGUST_EXPERIMENT_ROOT = (
+    REPOSITORY_ROOT
+    / "experiments"
+    / "long-sequence"
+    / "2026-08-03_batch-01"
+)
+AUGUST_SESSION_IDS = (
+    "20260803_144217",
+    "20260803_150952",
+    "20260803_154420",
+    "20260803_160842",
+    "20260803_164023",
+    "20260803_170357",
+)
 CAMERA_INTRINSICS_PATH = REPOSITORY_ROOT / "calibration" / "data" / "camera_intrinsics.json"
 ANNOTATION_FILENAME = "spatial_annotation.json"
 REFERENCE_SEQUENCE_LENGTH = 24
@@ -227,6 +241,57 @@ def discover_sessions(experiment_root: Path = EXPERIMENT_ROOT) -> list[SessionIn
             )
     if len(sessions) != 5:
         raise ValueError(f"Expected five usable sessions, found {len(sessions)}")
+    return sessions
+
+
+def discover_august_sessions(
+    experiment_root: Path = AUGUST_EXPERIMENT_ROOT,
+) -> list[SessionInfo]:
+    """Discover the six 2026-08-03 sessions from their per-run metadata.
+
+    Unlike the July batch, this batch has no manifest.  Requiring the known set
+    of session IDs prevents a partially copied batch from looking complete in
+    the annotation notebook.
+    """
+    run_root = experiment_root / "runs"
+    sessions: list[SessionInfo] = []
+    prefix = "cyranose_reading_pose_session_"
+    for session_id in AUGUST_SESSION_IDS:
+        session_directory = run_root / f"{prefix}{session_id}"
+        metadata_path = session_directory / "session_metadata.json"
+        csv_path = session_directory / "cyranose_reading_pose.csv"
+        video_path = session_directory / "rectified_rgb.mp4"
+        missing = [
+            path.name
+            for path in (metadata_path, csv_path, video_path)
+            if not path.is_file()
+        ]
+        if missing:
+            raise FileNotFoundError(
+                f"Incomplete August session {session_id}: missing {', '.join(missing)}"
+            )
+        with metadata_path.open(encoding="utf-8") as handle:
+            metadata = json.load(handle)
+        recorded_id = str(metadata.get("session_id", ""))
+        if recorded_id not in {session_id, f"{prefix}{session_id}"}:
+            raise ValueError(
+                f"Session identity mismatch in {metadata_path}: {recorded_id!r}"
+            )
+        trial_id = str(metadata["trial_id"])
+        layout = str(metadata["trial_label"]).replace("_", " ")
+        sessions.append(
+            SessionInfo(
+                session_id=session_id,
+                trial_id=trial_id,
+                slug=_session_slug(trial_id),
+                layout=layout,
+                session_directory=session_directory,
+                csv_path=csv_path,
+                video_path=video_path,
+                annotation_path=session_directory / ANNOTATION_FILENAME,
+                source_names=_source_names(layout),
+            )
+        )
     return sessions
 
 

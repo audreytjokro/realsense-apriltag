@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "session_id": "20260803_154420",
+  "trial_id": "2026-08-03_x_lavender_backslash_mint_slash_rotated90_random_10min_run03",
+  "coordinate_convention": {
+    "units": "cm",
+    "origin": "paper_center",
+    "x_positive": "right_in_calibrated_desk_view",
+    "y_positive": "down_in_calibrated_desk_view",
+    "paper_size_cm": 26.5
+  },
+  "usable_range": {
+    "start_raw_row_inclusive": 30,
+    "end_raw_row_inclusive": 1180,
+    "start_time_utc": "2026-08-03T19:44:38.643+00:00",
+    "end_time_utc": "2026-08-03T19:55:19.119+00:00"
+  },
+  "paper": {
+    "corners_desk_cm": [
+      [
+        10.957760922596037,
+        17.5595372454596
+      ],
+      [
+        40.30340366156049,
+        18.580255253771412
+      ],
+      [
+        40.13328399350852,
+        48.43625699689176
+      ],
+      [
+        9.851983080258245,
+        47.925897992735855
+      ]
+    ],
+    "canonical_corners_paper_cm": [
+      [
+        -13.25,
+        -13.25
+      ],
+      [
+        13.25,
+        -13.25
+      ],
+      [
+        13.25,
+        13.25
+      ],
+      [
+        -13.25,
+        13.25
+      ]
+    ],
+    "desk_to_paper": [
+      [
+        0.8837936044886995,
+        0.02069921146070058,
+        -23.05590865165033
+      ],
+      [
+        -0.020699211460700584,
+        0.8837936044886995,
+        -28.75216311860551
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "paper_to_desk": [
+      [
+        1.130865576186541,
+        -0.0264858509681731,
+        25.311607914480817
+      ],
+      [
+        0.026485850968173106,
+        1.1308655761865412,
+        33.12548687221466
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "fit_residuals_cm": [
+      0.3203638025179927,
+      0.313095689543568,
+      0.16812818743263522,
+      0.18453003062048884
+    ],
+    "fit_rms_cm": 0.25640802268295526
+  },
+  "sources": {
+    "mint": {
+      "corners_desk_cm": [
+        [
+          13.478119555517255,
+          41.763390815739484
+        ],
+        [
+          33.34685217251389,
+          23.366639714048844
+        ],
+        [
+          35.04989839404603,
+          25.336052696842174
+        ],
+        [
+          15.095038745061489,
+          43.98883616940907
+        ]
+      ],
+      "polygon_paper_cm": [
+        [
+          -10.279563530139235,
+          7.879068139334883
+        ],
+        [
+          6.899497044814641,
+          -8.791129925605073
+        ],
+        [
+          8.445403699337682,
+          -7.085827040682158
+        ],
+        [
+          -8.80447572747515,
+          9.812433557827909
+        ]
+      ]
+    },
+    "lavender": {
+      "corners_desk_cm": [
+        [
+          33.971513361020136,
+          44.724122309535815
+        ],
+        [
+          36.28449498173012,
+          42.338636262345325
+        ],
+        [
+          16.264718005267778,
+          22.46544106768247
+        ],
+        [
+          14.37978794690112,
+          24.51041181957004
+        ]
+      ],
+      "polygon_paper_cm": [
+        [
+          7.893651656700985,
+          10.071546606232836
+        ],
+        [
+          9.888472340257035,
+          7.915392398457065
+        ],
+        [
+          -8.216237984564605,
+          -9.234016818309662
+        ],
+        [
+          -9.839797833033298,
+          -7.387668180558219
+        ]
+      ]
+    }
+  },
+  "source_hashes": {
+    "cyranose_reading_pose.csv": "b9689d9c9d309e59427ff8f03e4a461803fa5e28599b4fcc2434aaf50dfd9453",
+    "rectified_rgb.mp4": "8bb366cad002c5b0f738024f75c1956f9738ce0d3f7b7ade94aca45a66d74180"
+  },
+  "diagnostics": {
+    "annotation_notebook": "analysis/notebooks/long_random_sequence_spatial_annotation.ipynb",
+    "desk_reference_view": {
+      "bounds_desk_cm": [
+        3.0544976069768097,
+        47.889138486969685,
+        9.351316535103415,
+        54.23355380699128
+      ],
+      "image_shape": [
+        801,
+        800,
+        3
+      ],
+      "source_raw_row_at_save": 0,
+      "video_frame_index_at_save": 0
+    },
+    "click_order": "cyclic outer corners; paper starts at top-left",
+    "qc_raw_row_at_save": 0,
+    "source_overlap": {
+      "top_source": "lavender",
+      "area_policy": "mask_overlap_for_area_evaluation",
+      "preview_overlap_area_desk_cm2": 8.09438419342041
+    },
+    "source_layout_transfer": {
+      "source_session_id": "20260803_150952",
+      "source_trial_id": "2026-08-03_x_mint_backslash_lavender_slash_random_10min_run02",
+      "clockwise_rotation_degrees": 270
+    }
+  }
+}
