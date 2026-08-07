@@ -283,6 +283,10 @@ def _model_display_name(architecture: str) -> str:
         return "TCNN"
     if architecture == "transformer":
         return "Transformer"
+    if architecture == "bigru":
+        return "BiGRU"
+    if architecture == "bigru-v2":
+        return "BiGRU v2"
     raise ValueError(f"Unknown architecture: {architecture}")
 
 

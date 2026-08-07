@@ -1,0 +1,680 @@
+{
+  "tcn_parameter_count": 254787,
+  "v1": {
+    "equal_session_macro_f1_mean": 0.33933104483514404,
+    "equal_session_macro_f1_sd": 0.018198636932055975,
+    "parameter_count": 65763,
+    "per_session": {
+      "caret-lavender-left-mint-right-run01": {
+        "accuracy_mean": 0.837156704361874,
+        "accuracy_std": 0.003740173474245644,
+        "learning_rate": 0.0001,
+        "macro_f1_mean": 0.3574096973130587,
+        "macro_f1_std": 0.0035521601832412338,
+        "majority_vote": {
+          "accuracy": 0.840064620355412,
+          "balanced_accuracy": 0.36862651370299554,
+          "class_order": [
+            "none",
+            "mint",
+            "lavender"
+          ],
+          "confusion_matrix": [
+            [
+              513,
+              0,
+              10
+            ],
+            [
+              31,
+              0,
+              9
+            ],
+            [
+              49,
+              0,
+              7
+            ]
+          ],
+          "count": 619,
+          "macro_f1_from_majority_vote": 0.36336218200891685,
+          "per_class": {
+            "lavender": {
+              "f1": 0.17073170731707316,
+              "precision": 0.2692307692307692,
+              "recall": 0.125,
+              "support": 56
+            },
+            "mint": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "support": 40
+            },
+            "none": {
+              "f1": 0.9193548387096775,
+              "precision": 0.8650927487352446,
+              "recall": 0.9808795411089866,
+              "support": 523
+            }
+          },
+          "present_classes": [
+            "none",
+            "mint",
+            "lavender"
+          ]
+        },
+        "median_best_epoch": 64.0,
+        "parameter_count": 65763,
+        "per_seed_macro_f1": [
+          0.35555997656863064,
+          0.3569060034764006,
+          0.354963139803486,
+          0.35523210070810385,
+          0.3643872660086725
+        ]
+      },
+      "caret-mint-left-lavender-right-run01": {
+        "accuracy_mean": 0.828698224852071,
+        "accuracy_std": 0.02349045353997539,
+        "learning_rate": 0.0001,
+        "macro_f1_mean": 0.3175715100088085,
+        "macro_f1_std": 0.0023460996137093714,
+        "majority_vote": {
+          "accuracy": 0.8431952662721893,
+          "balanced_accuracy": 0.33649033892936325,
+          "class_order": [
+            "none",
+            "mint",
+            "lavender"
+          ],
+          "confusion_matrix": [
+            [
+              569,
+              5,
+              0
+            ],
+            [
+              54,
+              1,
+              0
+            ],
+            [
+              47,
+              0,
+              0
+            ]
+          ],
+          "count": 676,
+          "macro_f1_from_majority_vote": 0.31585929401015583,
+          "per_class": {
+            "lavender": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "support": 47
+            },
+            "mint": {
+              "f1": 0.032786885245901634,
+              "precision": 0.16666666666666666,
+              "recall": 0.01818181818181818,
+              "support": 55
+            },
+            "none": {
+              "f1": 0.9147909967845659,
+              "precision": 0.8492537313432836,
+              "recall": 0.9912891986062717,
+              "support": 574
+            }
+          },
+          "present_classes": [
+            "none",
+            "mint",
+            "lavender"
+          ]
+        },
+        "median_best_epoch": 1.0,
+        "parameter_count": 65763,
+        "per_seed_macro_f1": [
+          0.3177856500224921,
+          0.3196951857666143,
+          0.31410929024298734,
+          0.31585929401015583,
+          0.3204081300017929
+        ]
+      },
+      "inverted-caret-lavender-left-mint-right-run01": {
+        "accuracy_mean": 0.8525096525096526,
+        "accuracy_std": 0.0012805501121063228,
+        "learning_rate": 0.0001,
+        "macro_f1_mean": 0.36297750980354376,
+        "macro_f1_std": 0.008705202023607679,
+        "majority_vote": {
+          "accuracy": 0.8523166023166023,
+          "balanced_accuracy": 0.36061977238447823,
+          "class_order": [
+            "none",
+            "mint",
+            "lavender"
+          ],
+          "confusion_matrix": [
+            [
+              876,
+              0,
+              8
+            ],
+            [
+              74,
+              0,
+              1
+            ],
+            [
+              70,
+              0,
+              7
+            ]
+          ],
+          "count": 1036,
+          "macro_f1_from_majority_vote": 0.3569019005451643,
+          "per_class": {
+            "lavender": {
+              "f1": 0.15053763440860213,
+              "precision": 0.4375,
+              "recall": 0.09090909090909091,
+              "support": 77
+            },
+            "mint": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "support": 75
+            },
+            "none": {
+              "f1": 0.9201680672268907,
+              "precision": 0.8588235294117647,
+              "recall": 0.9909502262443439,
+              "support": 884
+            }
+          },
+          "present_classes": [
+            "none",
+            "mint",
+            "lavender"
+          ]
+        },
+        "median_best_epoch": 74.0,
+        "parameter_count": 65763,
+        "per_seed_macro_f1": [
+          0.3554670061062224,
+          0.3648826505382479,
+          0.3507066560581776,
+          0.37397863425260686,
+          0.36985260206246423
+        ]
+      },
+      "lavender-only-horizontal-run01": {
+        "accuracy_mean": 0.8853146853146854,
+        "accuracy_std": 0.03940979805204298,
+        "learning_rate": 0.0001,
+        "macro_f1_mean": 0.33631852430428816,
+        "macro_f1_std": 0.013384793816471815,
+        "majority_vote": {
+          "accuracy": 0.9146853146853147,
+          "balanced_accuracy": 0.5,
+          "class_order": [
+            "none",
+            "mint",
+            "lavender"
+          ],
+          "confusion_matrix": [
+            [
+              654,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              61,
+              0,
+              0
+            ]
+          ],
+          "count": 715,
+          "macro_f1_from_majority_vote": 0.4777209642074507,
+          "per_class": {
+            "lavender": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "support": 61
+            },
+            "none": {
+              "f1": 0.9554419284149014,
+              "precision": 0.9146853146853147,
+              "recall": 1.0,
+              "support": 654
+            }
+          },
+          "present_classes": [
+            "none",
+            "lavender"
+          ]
+        },
+        "median_best_epoch": 23.0,
+        "parameter_count": 65763,
+        "per_seed_macro_f1": [
+          0.31848064280496713,
+          0.33167791104447775,
+          0.34643774591096804,
+          0.32876382876382876,
+          0.3562324929971989
+        ]
+      },
+      "mint-only-horizontal-run01": {
+        "accuracy_mean": 0.812924071082391,
+        "accuracy_std": 0.09513907255718118,
+        "learning_rate": 0.0001,
+        "macro_f1_mean": 0.32237798274602114,
+        "macro_f1_std": 0.0020404062445810115,
+        "majority_vote": {
+          "accuracy": 0.7819063004846527,
+          "balanced_accuracy": 0.49231732301388575,
+          "class_order": [
+            "none",
+            "mint",
+            "lavender"
+          ],
+          "confusion_matrix": [
+            [
+              477,
+              96,
+              0
+            ],
+            [
+              39,
+              7,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "count": 619,
+          "macro_f1_from_majority_vote": 0.48499639469743183,
+          "per_class": {
+            "mint": {
+              "f1": 0.09395973154362416,
+              "precision": 0.06796116504854369,
+              "recall": 0.15217391304347827,
+              "support": 46
+            },
+            "none": {
+              "f1": 0.8760330578512395,
+              "precision": 0.9244186046511628,
+              "recall": 0.8324607329842932,
+              "support": 573
+            }
+          },
+          "present_classes": [
+            "none",
+            "mint"
+          ]
+        },
+        "median_best_epoch": 2.0,
+        "parameter_count": 65763,
+        "per_seed_macro_f1": [
+          0.3219795382492605,
+          0.32298657718120805,
+          0.325984200984201,
+          0.32046979865771813,
+          0.32046979865771813
+        ]
+      }
+    }
+  },
+  "v2": {
+    "equal_session_macro_f1_mean": 0.44545204880789085,
+    "equal_session_macro_f1_sd": 0.054330586620663326,
+    "learning_rate": 0.001,
+    "parameter_count": 254975,
+    "per_session": {
+      "caret-lavender-left-mint-right-run01": {
+        "accuracy_mean": 0.8439418416801292,
+        "accuracy_std": 0.00821212602723027,
+        "learning_rate": 0.001,
+        "macro_f1_mean": 0.5328541269918502,
+        "macro_f1_std": 0.021128989549294815,
+        "majority_vote": {
+          "accuracy": 0.8546042003231018,
+          "balanced_accuracy": 0.5156560138395702,
+          "class_order": [
+            "none",
+            "mint",
+            "lavender"
+          ],
+          "confusion_matrix": [
+            [
+              499,
+              1,
+              23
+            ],
+            [
+              19,
+              8,
+              13
+            ],
+            [
+              34,
+              0,
+              22
+            ]
+          ],
+          "count": 619,
+          "macro_f1_from_majority_vote": 0.5469558725162851,
+          "per_class": {
+            "lavender": {
+              "f1": 0.3859649122807017,
+              "precision": 0.3793103448275862,
+              "recall": 0.39285714285714285,
+              "support": 56
+            },
+            "mint": {
+              "f1": 0.326530612244898,
+              "precision": 0.8888888888888888,
+              "recall": 0.2,
+              "support": 40
+            },
+            "none": {
+              "f1": 0.9283720930232557,
+              "precision": 0.9039855072463768,
+              "recall": 0.9541108986615678,
+              "support": 523
+            }
+          },
+          "present_classes": [
+            "none",
+            "mint",
+            "lavender"
+          ]
+        },
+        "median_best_epoch": 20.0,
+        "parameter_count": 254975,
+        "per_seed_macro_f1": [
+          0.5133359798833058,
+          0.5173029347562456,
+          0.5601885368510008,
+          0.5163219738340731,
+          0.557121209634626
+        ]
+      },
+      "caret-mint-left-lavender-right-run01": {
+        "accuracy_mean": 0.8423076923076923,
+        "accuracy_std": 0.004034964999108265,
+        "learning_rate": 0.001,
+        "macro_f1_mean": 0.42724940329018135,
+        "macro_f1_std": 0.011851151456879894,
+        "majority_vote": {
+          "accuracy": 0.8431952662721893,
+          "balanced_accuracy": 0.404312155583562,
+          "class_order": [
+            "none",
+            "mint",
+            "lavender"
+          ],
+          "confusion_matrix": [
+            [
+              557,
+              11,
+              6
+            ],
+            [
+              39,
+              11,
+              5
+            ],
+            [
+              34,
+              11,
+              2
+            ]
+          ],
+          "count": 676,
+          "macro_f1_from_majority_vote": 0.41397194536729426,
+          "per_class": {
+            "lavender": {
+              "f1": 0.06666666666666667,
+              "precision": 0.15384615384615385,
+              "recall": 0.0425531914893617,
+              "support": 47
+            },
+            "mint": {
+              "f1": 0.25,
+              "precision": 0.3333333333333333,
+              "recall": 0.2,
+              "support": 55
+            },
+            "none": {
+              "f1": 0.925249169435216,
+              "precision": 0.8841269841269841,
+              "recall": 0.9703832752613241,
+              "support": 574
+            }
+          },
+          "present_classes": [
+            "none",
+            "mint",
+            "lavender"
+          ]
+        },
+        "median_best_epoch": 12.0,
+        "parameter_count": 254975,
+        "per_seed_macro_f1": [
+          0.4377835771147402,
+          0.4108191023099754,
+          0.4271769533827156,
+          0.41791484161696824,
+          0.44255254202650746
+        ]
+      },
+      "inverted-caret-lavender-left-mint-right-run01": {
+        "accuracy_mean": 0.8637065637065637,
+        "accuracy_std": 0.0049369543832217914,
+        "learning_rate": 0.001,
+        "macro_f1_mean": 0.4773310829800117,
+        "macro_f1_std": 0.013481970119686963,
+        "majority_vote": {
+          "accuracy": 0.8648648648648649,
+          "balanced_accuracy": 0.4761757849993144,
+          "class_order": [
+            "none",
+            "mint",
+            "lavender"
+          ],
+          "confusion_matrix": [
+            [
+              861,
+              0,
+              23
+            ],
+            [
+              72,
+              0,
+              3
+            ],
+            [
+              42,
+              0,
+              35
+            ]
+          ],
+          "count": 1036,
+          "macro_f1_from_majority_vote": 0.47785028052586576,
+          "per_class": {
+            "lavender": {
+              "f1": 0.5072463768115941,
+              "precision": 0.5737704918032787,
+              "recall": 0.45454545454545453,
+              "support": 77
+            },
+            "mint": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "support": 75
+            },
+            "none": {
+              "f1": 0.9263044647660033,
+              "precision": 0.8830769230769231,
+              "recall": 0.9739819004524887,
+              "support": 884
+            }
+          },
+          "present_classes": [
+            "none",
+            "mint",
+            "lavender"
+          ]
+        },
+        "median_best_epoch": 11.0,
+        "parameter_count": 254975,
+        "per_seed_macro_f1": [
+          0.4792768751798655,
+          0.4643589033508723,
+          0.4908307766347832,
+          0.4594894051863206,
+          0.492699454548217
+        ]
+      },
+      "lavender-only-horizontal-run01": {
+        "accuracy_mean": 0.9071328671328672,
+        "accuracy_std": 0.005351364047471057,
+        "learning_rate": 0.001,
+        "macro_f1_mean": 0.37669328480935715,
+        "macro_f1_std": 0.011653895083494376,
+        "majority_vote": {
+          "accuracy": 0.9146853146853147,
+          "balanced_accuracy": 0.5520253672231413,
+          "class_order": [
+            "none",
+            "mint",
+            "lavender"
+          ],
+          "confusion_matrix": [
+            [
+              647,
+              1,
+              6
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              52,
+              2,
+              7
+            ]
+          ],
+          "count": 715,
+          "macro_f1_from_majority_vote": 0.5727911947424142,
+          "per_class": {
+            "lavender": {
+              "f1": 0.1891891891891892,
+              "precision": 0.5384615384615384,
+              "recall": 0.11475409836065574,
+              "support": 61
+            },
+            "none": {
+              "f1": 0.9563932002956392,
+              "precision": 0.9256080114449213,
+              "recall": 0.9892966360856269,
+              "support": 654
+            }
+          },
+          "present_classes": [
+            "none",
+            "lavender"
+          ]
+        },
+        "median_best_epoch": 4.0,
+        "parameter_count": 254975,
+        "per_seed_macro_f1": [
+          0.38473483600771724,
+          0.3620820820820821,
+          0.3944348027305334,
+          0.3676616437917906,
+          0.3745530594346624
+        ]
+      },
+      "mint-only-horizontal-run01": {
+        "accuracy_mean": 0.9004846526655896,
+        "accuracy_std": 0.0033265363945030914,
+        "learning_rate": 0.001,
+        "macro_f1_mean": 0.4131323459680538,
+        "macro_f1_std": 0.009749012359098783,
+        "majority_vote": {
+          "accuracy": 0.8982229402261712,
+          "balanced_accuracy": 0.5951324076181804,
+          "class_order": [
+            "none",
+            "mint",
+            "lavender"
+          ],
+          "confusion_matrix": [
+            [
+              545,
+              27,
+              1
+            ],
+            [
+              31,
+              11,
+              4
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "count": 619,
+          "macro_f1_from_majority_vote": 0.605277881387542,
+          "per_class": {
+            "mint": {
+              "f1": 0.2619047619047619,
+              "precision": 0.2894736842105263,
+              "recall": 0.2391304347826087,
+              "support": 46
+            },
+            "none": {
+              "f1": 0.9486510008703221,
+              "precision": 0.9461805555555556,
+              "recall": 0.9511343804537522,
+              "support": 573
+            }
+          },
+          "present_classes": [
+            "none",
+            "mint"
+          ]
+        },
+        "median_best_epoch": 18.0,
+        "parameter_count": 254975,
+        "per_seed_macro_f1": [
+          0.41644659151905533,
+          0.41640990528357874,
+          0.41905655320289464,
+          0.4199140500450544,
+          0.393834629789686
+        ]
+      }
+    }
+  }
+}
