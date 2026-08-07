@@ -93,7 +93,12 @@ short interpretation. They are saved with executed outputs.
    sequences: mint-only, lavender-only, two caret assignments, and one inverted
    caret. It uses host-derived elapsed time for causal histories, the fixed
    2.0 s pose correction, the existing height/support rules, and
-   protocol-approximate source overlays that never alter model scores. All five
+   protocol-approximate source overlays that never alter model scores (see
+   [`analysis/figures/notebook09_video_overlay_contact.jpg`](figures/notebook09_video_overlay_contact.jpg)
+   for the five overlay markups). Some frames in these sessions have no
+   qualified cube face or desk tag, so no snout pose is available; see
+   [`analysis/figures/missing_snout_pose_examples.jpg`](figures/missing_snout_pose_examples.jpg)
+   for representative examples. All five
    acquisitions pass synchronization and sensor-integrity checks. The
    mint-only run retains the clearest ranking (RMS AUC 0.858; active-mint AUC
    0.639). Median current-identity and active-state AUC across the source
@@ -137,6 +142,12 @@ Supporting folders:
 - `figures/`: diagnostic frames and contact sheets used during review.
 - `protocols/`: experimental procedures and design notes.
 - `manifests/`: templates and analysis-side indexes.
+- `response_pipeline/`: shared baseline/RMS/lag/height/smoothing primitives
+  used by notebooks 03-09, replacing logic that used to be redefined from
+  scratch in each notebook. See its own README for exactly what each
+  notebook imports versus keeps local, and `test_response_pipeline.py`
+  (repository root) for the regression tests that pin its output to already-
+  published notebook results.
 
 To rerun a notebook from the repository root:
 
